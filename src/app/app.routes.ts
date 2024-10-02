@@ -6,7 +6,7 @@ import { PerfilAdoptanteComponent } from './perfil-adoptante/perfil-adoptante.co
 import { PerfilRescatistaComponent } from './perfil-rescatista/perfil-rescatista.component';
 import { InfoMascotaComponent } from './info-mascota/info-mascota.component';
 import { SolicitudAdopcionComponent } from './solicitud-adopcion/solicitud-adopcion.component';
-import { AdopadorFormComponent } from './adopador-form/adopador-form.component';
+
 
 export const routes: Routes = [
   {
@@ -27,8 +27,5 @@ export const routes: Routes = [
     path: 'solicitud',
     component: SolicitudAdopcionComponent
   },
-  {
-    path: 'formulario-adoptador',
-    component: AdopadorFormComponent
-  },
+ 
 ];

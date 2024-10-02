@@ -1,6 +1,15 @@
 import { bootstrapApplication } from '@angular/platform-browser';
-import { appConfig } from './app/app.config';
+import { provideHttpClient } from '@angular/common/http'; // Importa el proveedor de HttpClient
 import { AppComponent } from './app/app.component';
+import { provideRouter } from '@angular/router';
+import { routes } from './app/app.routes';
+import { provideClientHydration } from '@angular/platform-browser';
 
-bootstrapApplication(AppComponent, appConfig)
-  .catch((err) => console.error(err));
+// Configura la aplicación con HttpClient
+bootstrapApplication(AppComponent, {
+  providers: [
+    provideHttpClient(), // Agrega el proveedor de HttpClient
+    provideRouter(routes), 
+    provideClientHydration()
+  ],
+}).catch((err) => console.error(err));
