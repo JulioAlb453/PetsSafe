@@ -1,0 +1,33 @@
+<form [formGroup]="adoptadorForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="name">Nombre:</label>
+      <input id="name" formControlName="name">
+      <div *ngIf="adoptadorForm.get('name')?.invalid && adoptadorForm.get('name')?.touched">
+        <small *ngIf="adoptadorForm.get('name')?.errors?.['required']">El nombre es requerido.</small>
+        <small *ngIf="adoptadorForm.get('name')?.errors?.['minlength']">
+          El nombre debe tener al menos {{ adoptadorForm.get('name')?.errors?.['minlength'].requiredLength }} caracteres.
+        </small>
+      </div>
+    </div>
+  
+    <div>
+      <label for="email">Email:</label>
+      <input id="email" formControlName="email">
+      <div *ngIf="adoptadorForm.get('email')?.invalid && adoptadorForm.get('email')?.touched">
+        <small *ngIf="adoptadorForm.get('email')?.errors?.['required']">El email es requerido.</small>
+        <small *ngIf="adoptadorForm.get('email')?.errors?.['email']">Debe ser un email válido.</small>
+      </div>
+    </div>
+  
+    <div>
+      <label for="numTelefono">Teléfono:</label>
+      <input id="numTelefono" formControlName="numTelefono">
+      <div *ngIf="adoptadorForm.get('numTelefono')?.invalid && adoptadorForm.get('numTelefono')?.touched">
+        <small *ngIf="adoptadorForm.get('numTelefono')?.errors?.['required']">El teléfono es requerido.</small>
+        <small *ngIf="adoptadorForm.get('numTelefono')?.errors?.['pattern']">Debe ser un número de teléfono válido de 10 dígitos.</small>
+      </div>
+    </div>
+  
+    <button type="submit" [disabled]="adoptadorForm.invalid">Enviar</button>
+  </form>
+      
