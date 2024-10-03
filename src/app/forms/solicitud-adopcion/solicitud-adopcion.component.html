@@ -1,64 +1,65 @@
 <div class="container">
-    <div class="content-wrapper">
-      <h2>Solicitud de Adopción</h2>
-      <form [formGroup]="solicitudForm" (ngSubmit)="onSubmit()">
-        <div>
-          <label for="fechaAdopcion">Fecha de Adopción:</label>
-          <input type="date" id="fechaAdopcion" formControlName="fechaAdopcion" />
-          <div *ngIf="solicitudForm.get('fechaAdopcion')?.invalid && solicitudForm.get('fechaAdopcion')?.touched">
-            <small *ngIf="solicitudForm.get('fechaAdopcion')?.errors?.['required']">
-              La fecha es requerida.
-            </small>
-          </div>
+  <div class="content-wrapper">
+    <h2>Solicitud de Adopción</h2>
+    <form [formGroup]="solicitudForm" (ngSubmit)="onSubmit()">
+      <div>
+        <label for="fechaAdopcion">Fecha de Adopción:</label>
+        <input type="date" id="fechaAdopcion" formControlName="fechaAdopcion" />
+        <div *ngIf="solicitudForm.get('fechaAdopcion')?.invalid && solicitudForm.get('fechaAdopcion')?.touched">
+          <small *ngIf="solicitudForm.get('fechaAdopcion')?.errors?.['required']">
+            La fecha es requerida.
+          </small>
         </div>
-  
-        <div>
-          <label for="localizacion">Localización:</label>
-          <input id="localizacion" formControlName="localizacion" />
-          <div *ngIf="solicitudForm.get('localizacion')?.invalid && solicitudForm.get('localizacion')?.touched">
-            <small *ngIf="solicitudForm.get('localizacion')?.errors?.['required']">
-              La localización es requerida.
-            </small>
-            <small *ngIf="solicitudForm.get('localizacion')?.errors?.['minlength']">
-              La localización debe tener al menos {{ solicitudForm.get('localizacion')?.errors?.['minlength'].requiredLength }} caracteres.
-            </small>
-          </div>
+      </div>
+
+      <div>
+        <label for="localizacion">Localización:</label>
+        <input id="localizacion" formControlName="localizacion" />
+        <div *ngIf="solicitudForm.get('localizacion')?.invalid && solicitudForm.get('localizacion')?.touched">
+          <small *ngIf="solicitudForm.get('localizacion')?.errors?.['required']">
+            La localización es requerida.
+          </small>
+          <small *ngIf="solicitudForm.get('localizacion')?.errors?.['minlength']">
+            La localización debe tener al menos {{ solicitudForm.get('localizacion')?.errors?.['minlength'].requiredLength }} caracteres.
+          </small>
         </div>
-  
-        <h3>Información del Adoptador</h3>
-  
-        <div>
-          <label for="name">Nombre:</label>
-          <input id="name" [value]="adoptadorInfo?.nombre" disabled />
-        </div>
-  
-        <div>
-          <label for="APaterno">Apellido Paterno:</label>
-          <input id="APaterno" [value]="adoptadorInfo?.APaterno" disabled />
-        </div>
-  
-        <div>
-          <label for="AMaterno">Apellido Materno:</label>
-          <input id="AMaterno" [value]="adoptadorInfo?.AMaterno" disabled />
-        </div>
-  
-        <div>
-          <label for="email">Email:</label>
-          <input id="email" [value]="adoptadorInfo?.correoElectronico" disabled />
-        </div>
-  
-        <div>
-          <label for="numTelefono">Teléfono:</label>
-          <input id="numTelefono" [value]="adoptadorInfo?.numTelefono" disabled />
-        </div>
-  
-        <div>
-          <label for="edad">Edad:</label>
-          <input id="edad" [value]="adoptadorInfo?.edad" disabled />
-        </div>
-  
-        <button type="submit" [disabled]="solicitudForm.invalid">Enviar Solicitud</button>
-      </form>
-    </div>
+      </div>
+
+      <h3>Información del Adoptador</h3>
+
+      <div>
+        <label for="name">Nombre:</label>
+        <input id="name" [value]="adoptadorInfo?.nombre" disabled />
+      </div>
+
+      <div>
+        <label for="APaterno">Apellido Paterno:</label>
+        <input id="APaterno" [value]="adoptadorInfo?.APaterno" disabled />
+      </div>
+
+      <div>
+        <label for="AMaterno">Apellido Materno:</label>
+        <input id="AMaterno" [value]="adoptadorInfo?.AMaterno" disabled />
+      </div>
+
+      <div>
+        <label for="email">Email:</label>
+        <input id="email" [value]="adoptadorInfo?.correoElectronico" disabled />
+      </div>
+
+      <div>
+        <label for="numTelefono">Teléfono:</label>
+        <input id="numTelefono" [value]="adoptadorInfo?.numTelefono" disabled />
+      </div>
+
+      <div>
+        <label for="edad">Edad:</label>
+        <input id="edad" [value]="adoptadorInfo?.edad" disabled />
+      </div>
+
+      <button type="submit" [disabled]="solicitudForm.invalid || loading">Enviar Solicitud</button>
+      <div *ngIf="loading">Enviando solicitud...</div>
+      <div *ngIf="errorMessage">{{ errorMessage }}</div>
+    </form>
   </div>
-  
+</div>

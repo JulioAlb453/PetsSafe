@@ -1,13 +1,13 @@
 <div class="pet-cards-conteiner">
   <div class="pet-card">
     <img [src]="pet.image" alt="{{ pet.name }}" />
-    <h3>{{ pet.name }}</h3>
+    <h3>{{ pet.nombre }}</h3>
     <p>Sexo: {{ pet.sexo }}</p>
-    <p>Tamaño: {{ pet.size }}</p>
+    <p>Tamaño: {{ tamano }}</p> 
     <p>Localización: {{ pet.localizacion }}</p>
 
     <div class="pet-trait">
-      {{ pet.trait }}
+      {{ pet.description }}
     </div>
 
     <button

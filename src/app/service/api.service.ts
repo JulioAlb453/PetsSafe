@@ -14,10 +14,14 @@ export class ApiService {
     return this.http.get(`${this.baseUrl}/adoptadores/obtenerAdoptadores/`); 
   }
 
-  addAdoptadores(adoptadores: any): Observable<any> {
-    return this.http.post(`${this.baseUrl}`, adoptadores); 
+  addSolicitud(adoptadores: any): Observable<any> {
+    return this.http.post(`${this.baseUrl}/solicitudes/`, adoptadores); 
   }
   agregarMascota(mascota: any): Observable<any> {
     return this.http.post(`${this.baseUrl}/mascotas/`, mascota);
+  }
+
+  getMascota(): Observable<any> {
+    return this.http.get(`${this.baseUrl}/mascotas/obtenerMascotas/`); 
   }
 }
