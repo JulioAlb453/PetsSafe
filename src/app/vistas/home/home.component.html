@@ -3,7 +3,8 @@
       <app-header></app-header>
       <app-adoption-section></app-adoption-section>
       <div class="pet-cards">
-        <app-pet-card *ngFor="let pet of pets" [pet]="pet"></app-pet-card>
+        <app-pet-card *ngFor="let pet of pets" [pet]="pet" [showButton]="false"></app-pet-card>
+
       </div>
     </div>
   </div>

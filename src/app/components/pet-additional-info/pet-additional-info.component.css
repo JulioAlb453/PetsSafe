@@ -1,0 +1,13 @@
+.additional-info {
+    background-color: #6d4c41;
+    color: white;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .additional-info h2 {
+    margin-bottom: 10px;
+  }
+  

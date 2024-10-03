@@ -1,0 +1,9 @@
+.pet-cards-container {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    gap: 20px; 
+    overflow-x: auto; 
+    box-sizing: border-box;
+  }
+  

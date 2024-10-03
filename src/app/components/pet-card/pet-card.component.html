@@ -2,6 +2,13 @@
     <img [src]="pet.image" alt="{{ pet.name }}" />
     <h3>{{ pet.name }}</h3>
     <p>Sexo: {{ pet.sexo }}</p>
-    <p>Tamaño: {{ pet.size }}</p> <!-- Cambia aquí 'tamaño' a 'size' -->
+    <p>size: {{ pet.zise }}</p>
     <p>Localizacion: {{ pet.localizacion }}</p>
-</div>
+  
+    <div class="pet-trait">
+      {{ pet.trait }}
+    </div>
+  
+    <button *ngIf="showButton" [routerLink]="['/adopcion', pet.id]" class="view-more-button">Ver más</button>
+  </div>
+  

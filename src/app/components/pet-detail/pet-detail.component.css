@@ -1,0 +1,32 @@
+.pet-detail-container {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .pet-image-section img {
+    width: 100%;
+    height: auto;
+    max-width: 300px;
+    border-radius: 10px;
+  }
+  
+  .pet-info-section {
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .adopt-button {
+    background-color: #795548;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .adopt-button:hover {
+    background-color: #5d4037;
+  }
+  

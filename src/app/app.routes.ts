@@ -6,6 +6,8 @@ import { PerfilAdoptanteComponent } from './vistas/perfil-adoptante/perfil-adopt
 import { PerfilRescatistaComponent } from './vistas/perfil-rescatista/perfil-rescatista.component';
 import { VistaMascotasComponent } from './vistas/vista-mascotas/vista-mascotas.component';
 import { VistaAdopcionComponent } from './vistas/vista-adopcion/vista-adopcion.component';
+import { AdoptionPageComponent } from './vistas/adoption-page/adoption-page.component';
+
 
 export const routes: Routes = [
   {
@@ -14,17 +16,19 @@ export const routes: Routes = [
   },
   {
     path: 'perfilAdoptante',
-    component: PerfilAdoptanteComponent
+    component: PerfilAdoptanteComponent,
   },
   {
     path: 'perfilRescatista',
-    component: PerfilRescatistaComponent
-  },  {
-    path: 'inforMascota',
-    component: VistaMascotasComponent
-  },  {
-    path: 'solicitud',
-    component: VistaAdopcionComponent
+    component: PerfilRescatistaComponent,
   },
- 
+  {
+    path: 'inforMascota',
+    component: VistaMascotasComponent,
+  },
+  {
+    path: 'solicitud',
+    component: VistaAdopcionComponent,
+  },
+  { path: 'adopcion/:id', component: AdoptionPageComponent },
 ];
