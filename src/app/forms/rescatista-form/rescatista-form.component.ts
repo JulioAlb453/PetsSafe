@@ -2,12 +2,14 @@ import { Component, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
+import { RouterLink } from '@angular/router';
+
 @Component({
   selector: 'app-rescatista-form',
   standalone: true,
-  imports: [CommonModule,ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, RouterLink],
   templateUrl: './rescatista-form.component.html',
-  styleUrls: ['./rescatista-form.component.css'] // Aquí corregí 'styleUrl' por 'styleUrls'
+  styleUrls: ['./rescatista-form.component.css'], 
 })
 export class RescatistaFormComponent {
   @Input() rescatista: any;

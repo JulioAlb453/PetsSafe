@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { PetDetailComponent } from '../../components/pet-detail/pet-detail.component';
 import { PetAdditionalInfoComponent } from '../../components/pet-additional-info/pet-additional-info.component';
-import { RescatistaFormComponent } from '../../components/rescatista-form/rescatista-form.component';
+import { RescatistaFormComponent } from '../../forms/rescatista-form/rescatista-form.component';
 import { AdopadorFormComponent } from "../../forms/adopador-form/adopador-form.component";
 
 @Component({

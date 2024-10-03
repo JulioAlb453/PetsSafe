@@ -1,0 +1,56 @@
+<div class="mascota-form-container">
+  <h2>Agregar Mascota</h2>
+  <form [formGroup]="mascotaForm" (ngSubmit)="agregarMascota()">
+    <div class="form-row">
+      <label>Nombre:</label>
+      <input type="text" formControlName="nombre" />
+      <div *ngIf="mascotaForm.get('nombre')?.invalid && mascotaForm.get('nombre')?.touched">
+        <small *ngIf="mascotaForm.get('nombre')?.errors?.['required']">El nombre es requerido.</small>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <label>Edad:</label>
+      <input type="number" formControlName="edad" min="0" />
+      <div *ngIf="mascotaForm.get('edad')?.invalid && mascotaForm.get('edad')?.touched">
+        <small *ngIf="mascotaForm.get('edad')?.errors?.['required']">La edad es requerida.</small>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <label>Tamaño:</label>
+      <select formControlName="tamano">
+        <option value="">Selecciona un tamaño</option>
+        <option value="pequeño">Pequeño</option>
+        <option value="mediano">Mediano</option>
+        <option value="grande">Grande</option>
+      </select>
+      <div *ngIf="mascotaForm.get('tamano')?.invalid && mascotaForm.get('tamano')?.touched">
+        <small *ngIf="mascotaForm.get('tamano')?.errors?.['required']">El tamaño es requerido.</small>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <label>Sexo:</label>
+      <div>
+        <label>
+          <input type="radio" formControlName="sexo" value="macho" /> Macho
+        </label>
+        <label>
+          <input type="radio" formControlName="sexo" value="hembra" /> Hembra
+        </label>
+      </div>
+      <div *ngIf="mascotaForm.get('sexo')?.invalid && mascotaForm.get('sexo')?.touched">
+        <small *ngIf="mascotaForm.get('sexo')?.errors?.['required']">El sexo es requerido.</small>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <label>Padecimiento:</label>
+      <input type="text" formControlName="padecimiento" />
+    </div>
+
+    <button type="submit" class="submit-button" [disabled]="mascotaForm.invalid">Agregar Mascota</button>
+    <button type="button" [routerLink]="['/perfilRescatista']" class="submit-button">Volver a perfil rescatista</button>
+  </form>
+</div>
