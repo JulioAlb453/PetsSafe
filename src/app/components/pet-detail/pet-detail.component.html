@@ -1,17 +1,18 @@
 <div class="pet-detail-container">
-    <div class="pet-image-section">
-      <img [src]="pet.image" alt="{{ pet.name }}" />
-    </div>
-    <div class="pet-info-section">
-      <h2>{{ pet.name }}</h2>
-      <h3>Mascota en adopción</h3>
-      <p><strong>Género:</strong> {{ pet.genero }}</p>
-      <p><strong>Categoría:</strong> {{ pet.categoria }}</p>
-      <p><strong>Tamaño:</strong> {{ pet.size }}</p>
-      <p><strong>Edad:</strong> {{ pet.edad }}</p>
-      <p><strong>Localización:</strong> {{ pet.localizacion }}</p>
-      <p><strong>Descripción:</strong> {{ pet.descripcion }}</p>
-      <button routerLink="/solicitud" class="adopt-button">¡Quiero adoptarlo!</button>
-    </div>
+  <div class="pet-image-section">
+    <img [src]="mascota.image" alt="{{ mascota.nombre }}" />
   </div>
-  
+  <div class="mascota-info-section">
+    <h2>{{ mascota.nombre }}</h2>
+    <h3>Mascota en adopción</h3>
+    <p><strong>Género:</strong> {{ mascota.sexo }}</p>
+    <p><strong>Categoría:</strong> {{ mascota.categoria }}</p>
+    <p><strong>Tamaño:</strong> {{ tamano }}</p>
+    <p><strong>Edad:</strong> {{ mascota.edad }}</p>
+    <!-- <p><strong>Localización:</strong> {{ rescatista.localizacion }}</p> -->
+    <p><strong>padecimiento:</strong> {{ mascota.padecimiento }}</p>
+    <button routerLink="/solicitud" class="adopt-button">
+      ¡Quiero adoptarlo!
+    </button>
+  </div>
+</div>

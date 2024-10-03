@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RescatistaFormComponent } from '../../forms/rescatista-form/rescatista-form.component';
+import { RescatistaFormComponent } from '../../components/rescatista-form/rescatista-form.component';
 @Component({
   selector: 'app-perfil-rescatista',
   standalone: true,

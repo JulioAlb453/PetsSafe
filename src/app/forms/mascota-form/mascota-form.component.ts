@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit , Input} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms'; 
@@ -13,6 +13,8 @@ import { ApiService } from '../../service/api.service';
 })
 export class MascotaFormComponent implements OnInit {
   mascotaForm: FormGroup;
+  @Input() rescatista: any;
+
 
   constructor(private fb: FormBuilder, private ApiService: ApiService) {
     this.mascotaForm = this.fb.group({
@@ -37,5 +39,19 @@ export class MascotaFormComponent implements OnInit {
         }
       );
     }
+  }
+
+  loadRescatistaDetails(id: string | null){
+    if(id){
+      this.ApiService.getMascotaById(id).subscribe(
+        (data) =>{
+          this.rescatista = data
+        },
+        (error) => {
+          console.error('Error al cargar los detalles del rescatista:', error);
+        }
+      )
+    }
+
   }
 }

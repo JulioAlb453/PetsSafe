@@ -14,11 +14,12 @@ import { Router } from '@angular/router'; // Importa Router para redireccionar
 })
 export class SolicitudAdopcionComponent implements OnInit {
   solicitudForm: FormGroup;
-  adoptadorInfo: any;
-  loading: boolean = false; // Estado de carga
-  errorMessage: string | null = null; // Mensaje de error
+  rescatistaInfo: any; 
+  mascotaInfo: any; 
+  loading: boolean = false; 
+  errorMessage: string | null = null; 
 
-  constructor(private fb: FormBuilder, private apiService: ApiService, private router: Router) { // Inyecta Router
+  constructor(private fb: FormBuilder, private apiService: ApiService, private router: Router) { 
     this.solicitudForm = this.fb.group({
       fechaAdopcion: ['', [Validators.required]],
       localizacion: ['', [Validators.required, Validators.minLength(5)]],
@@ -26,40 +27,53 @@ export class SolicitudAdopcionComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.loadAdoptadorInfo();
+    this.loadRescatistaInfo();
+    this.loadMascotaInfo();
   }
 
-  loadAdoptadorInfo() {
-    this.apiService.getAdoptadores().subscribe(
+  loadRescatistaInfo() {
+    this.apiService.getRescatista().subscribe(
       (info) => {
-        console.log(info[0]);
-        this.adoptadorInfo = info[0];
+        console.log(info);
+        this.rescatistaInfo = info; 
       },
       (error) => {
-        console.error('Error al cargar la información del adoptador:', error);
+        console.error('Error al cargar la información del rescatista:', error);
+      }
+    );
+  }
+
+  loadMascotaInfo() {
+    this.apiService.getMascota().subscribe(
+      (info) => {
+        console.log(info);
+        this.mascotaInfo = info; 
+      },
+      (error) => {
+        console.error('Error al cargar la información de la mascota:', error);
       }
     );
   }
 
   onSubmit() {
     if (this.solicitudForm.valid) {
-      this.loading = true; // Activa el estado de carga
+      this.loading = true; 
       const solicitudData = {
         ...this.solicitudForm.value,
-        adoptadorInfo: this.adoptadorInfo,
+        rescatista: this.rescatistaInfo,
+        mascota: this.mascotaInfo,
       };
       this.apiService.addSolicitud(solicitudData).subscribe(
         (response) => {
           console.log('Datos enviados a la API:', response);
-          this.loading = false; // Desactiva el estado de carga
-          // Resetea el formulario o redirige
-          this.solicitudForm.reset();
-          this.router.navigate(['/success']); // Cambia a la ruta deseada
+          this.loading = false; 
+          this.solicitudForm.reset(); 
+          this.router.navigate(['/success']); 
         },
         (error) => {
           console.error('Error al enviar los datos:', error);
-          this.loading = false; // Desactiva el estado de carga
-          this.errorMessage = 'Hubo un problema al enviar la solicitud. Intenta de nuevo.'; // Establece mensaje de error
+          this.loading = false;
+          this.errorMessage = 'Hubo un problema al enviar la solicitud. Intenta de nuevo.';   
         }
       );
     } else {

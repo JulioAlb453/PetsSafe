@@ -1,43 +1,58 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { ApiService } from '../../service/api.service';
 import { PetDetailComponent } from '../../components/pet-detail/pet-detail.component';
 import { PetAdditionalInfoComponent } from '../../components/pet-additional-info/pet-additional-info.component';
-import { RescatistaFormComponent } from '../../forms/rescatista-form/rescatista-form.component';
-import { AdopadorFormComponent } from "../../forms/adopador-form/adopador-form.component";
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-adoption-page',
   templateUrl: './adoption-page.component.html',
   styleUrls: ['./adoption-page.component.css'],
   standalone: true,
-  imports: [
-    PetDetailComponent,
-    PetAdditionalInfoComponent,
-    RescatistaFormComponent,
-    AdopadorFormComponent
-]
+  imports: [PetDetailComponent, PetAdditionalInfoComponent, CommonModule],
 })
-export class AdoptionPageComponent {
-  pet = {
-    name: 'Mister',
-    image: 'https://www.respetmascotas.com/_Assets/img/181129-Imagen-AlimentacionMascotas.jpg',
-    genero: 'Masculino',
-    categoria: 'Perro',
-    tamano: 'Grande',
-    edad: '3 años',
-    localizacion: 'Tuxtla, Chiapas',
-    descripcion: 'Mister es un perro muy calmado y no hace tanto berrinche, casi no hace desastres en la casa'
-  };
-
+export class AdoptionPageComponent implements OnInit {
+  mascota: any;
+  rescatista: any;
   petInfo = {
     title: 'Protector',
-    description: 'Las mascotas protectoras son tu mejor opción...'
+    description: 'Las mascotas protectoras son tu mejor opción...',
   };
 
-  rescatista = {
-    nombre: 'Juan Pérez',
-    email: 'juan.perez@gmail.com',
-    telefono: '123-456-7890',
-    edad: '30 años',
-    direccion: 'Calle Falsa 123, Ciudad'
-  };
+  constructor(private route: ActivatedRoute, private apiService: ApiService) {}
+
+  ngOnInit(): void {
+    const petId = this.route.snapshot.paramMap.get('id');
+    const rescatistaId = this.route.snapshot.paramMap.get('id');
+    this.loadPetDetails(petId);
+    this.loadRescatistaDetails(rescatistaId);
+  }
+
+  loadPetDetails(id: string | null): void {
+    if (id) {
+      this.apiService.getMascotaById(id).subscribe(
+        (data) => {
+          this.mascota = data;
+        },
+        (error) => {
+          console.error('Error al cargar los detalles de la mascota:', error);
+        }
+      );
+    }
+  }
+
+  loadRescatistaDetails(id: string | null): void {
+    if (id) {
+      this.apiService.getRescatistaById(id).subscribe(
+        (data) => {
+          this.rescatista = data;
+          console.log(this.rescatista);
+        },
+        (error) => {
+          console.error('Error al cargar los detalles del rescatista:', error);
+        }
+      );
+    }
+  }
 }

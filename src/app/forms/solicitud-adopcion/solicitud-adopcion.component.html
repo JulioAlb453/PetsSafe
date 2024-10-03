@@ -1,6 +1,7 @@
 <div class="container">
   <div class="content-wrapper">
     <h2>Solicitud de Adopción</h2>
+    
     <form [formGroup]="solicitudForm" (ngSubmit)="onSubmit()">
       <div>
         <label for="fechaAdopcion">Fecha de Adopción:</label>
@@ -25,36 +26,26 @@
         </div>
       </div>
 
-      <h3>Información del Adoptador</h3>
-
+      <h3>Información del Rescatista</h3>
       <div>
-        <label for="name">Nombre:</label>
-        <input id="name" [value]="adoptadorInfo?.nombre" disabled />
+        <label for="rescatistaNombre">Nombre:</label>
+        <input id="rescatistaNombre" [value]="rescatistaInfo?.nombre" disabled />
       </div>
 
       <div>
-        <label for="APaterno">Apellido Paterno:</label>
-        <input id="APaterno" [value]="adoptadorInfo?.APaterno" disabled />
+        <label for="rescatistaTelefono">Teléfono:</label>
+        <input id="rescatistaTelefono" [value]="rescatistaInfo?.telefono" disabled />
+      </div>
+
+      <h3>Información de la Mascota</h3>
+      <div>
+        <label for="mascotaNombre">Nombre:</label>
+        <input id="mascotaNombre" [value]="mascotaInfo?.nombre" disabled />
       </div>
 
       <div>
-        <label for="AMaterno">Apellido Materno:</label>
-        <input id="AMaterno" [value]="adoptadorInfo?.AMaterno" disabled />
-      </div>
-
-      <div>
-        <label for="email">Email:</label>
-        <input id="email" [value]="adoptadorInfo?.correoElectronico" disabled />
-      </div>
-
-      <div>
-        <label for="numTelefono">Teléfono:</label>
-        <input id="numTelefono" [value]="adoptadorInfo?.numTelefono" disabled />
-      </div>
-
-      <div>
-        <label for="edad">Edad:</label>
-        <input id="edad" [value]="adoptadorInfo?.edad" disabled />
+        <label for="mascotaTipo">Tipo:</label>
+        <input id="mascotaTipo" [value]="mascotaInfo?.tipo" disabled />
       </div>
 
       <button type="submit" [disabled]="solicitudForm.invalid || loading">Enviar Solicitud</button>
