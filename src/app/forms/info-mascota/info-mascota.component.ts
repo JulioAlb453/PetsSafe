@@ -1,20 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { PetCardComponent } from '../../components/pet-card/pet-card.component';
 import { CommonModule } from '@angular/common';
-import { ApiService } from '../../service/api.service'; // Asegúrate de importar el servicio
-import { Observable } from 'rxjs';
+import { ApiService } from '../../service/api.service'; 
 
 @Component({
   selector: 'app-info-mascota',
   standalone: true,
   imports: [PetCardComponent, CommonModule],
   templateUrl: './info-mascota.component.html',
-  styleUrls: ['./info-mascota.component.css'] // Corrige aquí para 'styleUrls'
+  styleUrls: ['./info-mascota.component.css'] 
 })
 export class InfoMascotaComponent implements OnInit {
-  pets: any[] = []; // Inicializa como un array vacío
+  pets: any[] = []; 
+  
 
-  constructor(private apiService: ApiService) { } // Inyecta ApiService
+  constructor(private apiService: ApiService) { } 
 
   ngOnInit(): void {
     this.loadPets();
@@ -23,10 +23,10 @@ export class InfoMascotaComponent implements OnInit {
   loadPets(): void {
     this.apiService.getMascota().subscribe(
       (data) => {
-        this.pets = data; // Asigna los datos obtenidos a la variable 'pets'
+        this.pets = data; 
       },
       (error) => {
-        console.error('Error al cargar las mascotas:', error); // Manejo de errores
+        console.error('Error al cargar las mascotas:', error); 
       }
     );
   }

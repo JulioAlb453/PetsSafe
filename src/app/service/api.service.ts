@@ -24,4 +24,8 @@ export class ApiService {
   getMascota(): Observable<any> {
     return this.http.get(`${this.baseUrl}/mascotas/obtenerMascotas/`); 
   }
+
+  addRescatista(adoptadores: any): Observable<any> {
+    return this.http.post(`${this.baseUrl}/rescatista/`, adoptadores); 
+  }
 }
