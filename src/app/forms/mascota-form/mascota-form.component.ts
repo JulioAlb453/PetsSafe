@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms'; 
 import { RouterLink } from '@angular/router';
-
+import { ApiService } from '../../service/api.service';
 @Component({
   selector: 'app-mascota-form',
   templateUrl: './mascota-form.component.html',
@@ -14,11 +14,11 @@ import { RouterLink } from '@angular/router';
 export class MascotaFormComponent implements OnInit {
   mascotaForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private ApiService: ApiService) {
     this.mascotaForm = this.fb.group({
       nombre: ['', Validators.required],
       edad: ['', [Validators.required, Validators.min(0)]],
-      tamano: ['', Validators.required],
+      tamaño: ['', Validators.required],
       sexo: ['', Validators.required],
       padecimiento: ['']
     });
@@ -28,8 +28,14 @@ export class MascotaFormComponent implements OnInit {
 
   agregarMascota() {
     if (this.mascotaForm.valid) {
-      // Lógica para agregar la mascota
-      console.log(this.mascotaForm.value);
+      this.ApiService.agregarMascota(this.mascotaForm.value).subscribe(
+        response => {
+          console.log('Mascota agregada con éxito', response);
+        },
+        error => {
+          console.error('Error al agregar la mascota', error);
+        }
+      );
     }
   }
 }

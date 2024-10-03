@@ -9,7 +9,7 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   templateUrl: './solicitud-adopcion.component.html',
   styleUrls: ['./solicitud-adopcion.component.css'],
-  imports: [ReactiveFormsModule, CommonModule]  // Correcto
+  imports: [ReactiveFormsModule, CommonModule]  
 })
 export class SolicitudAdopcionComponent implements OnInit {
   solicitudForm: FormGroup;

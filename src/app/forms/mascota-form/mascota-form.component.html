@@ -19,14 +19,14 @@
 
     <div class="form-row">
       <label>Tamaño:</label>
-      <select formControlName="tamano">
+      <select formControlName="tamaño">
         <option value="">Selecciona un tamaño</option>
         <option value="pequeño">Pequeño</option>
         <option value="mediano">Mediano</option>
         <option value="grande">Grande</option>
       </select>
-      <div *ngIf="mascotaForm.get('tamano')?.invalid && mascotaForm.get('tamano')?.touched">
-        <small *ngIf="mascotaForm.get('tamano')?.errors?.['required']">El tamaño es requerido.</small>
+      <div *ngIf="mascotaForm.get('tamaño')?.invalid && mascotaForm.get('tamaño')?.touched">
+        <small *ngIf="mascotaForm.get('tamaño')?.errors?.['required']">El tamaño es requerido.</small>
       </div>
     </div>
 

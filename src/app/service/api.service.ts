@@ -17,4 +17,7 @@ export class ApiService {
   addAdoptadores(adoptadores: any): Observable<any> {
     return this.http.post(`${this.baseUrl}`, adoptadores); 
   }
+  agregarMascota(mascota: any): Observable<any> {
+    return this.http.post(`${this.baseUrl}/mascotas/`, mascota);
+  }
 }
