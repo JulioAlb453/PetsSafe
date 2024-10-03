@@ -32,7 +32,7 @@ export class SolicitudAdopcionComponent implements OnInit {
   }
 
   loadRescatistaInfo() {
-    this.apiService.getRescatista().subscribe(
+    this.apiService.getRescatistaById('1').subscribe(
       (info) => {
         console.log(info);
         this.rescatistaInfo = info; 
@@ -44,7 +44,7 @@ export class SolicitudAdopcionComponent implements OnInit {
   }
 
   loadMascotaInfo() {
-    this.apiService.getMascota().subscribe(
+    this.apiService.getMascotaById('1').subscribe(
       (info) => {
         console.log(info);
         this.mascotaInfo = info; 
@@ -63,6 +63,7 @@ export class SolicitudAdopcionComponent implements OnInit {
         rescatista: this.rescatistaInfo,
         mascota: this.mascotaInfo,
       };
+      console.log(solicitudData)
       this.apiService.addSolicitud(solicitudData).subscribe(
         (response) => {
           console.log('Datos enviados a la API:', response);

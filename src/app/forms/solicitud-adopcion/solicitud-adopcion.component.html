@@ -34,7 +34,7 @@
 
       <div>
         <label for="rescatistaTelefono">Teléfono:</label>
-        <input id="rescatistaTelefono" [value]="rescatistaInfo?.telefono" disabled />
+        <input id="rescatistaTelefono" [value]="rescatistaInfo?.numTelefono" disabled />
       </div>
 
       <h3>Información de la Mascota</h3>
@@ -44,8 +44,16 @@
       </div>
 
       <div>
-        <label for="mascotaTipo">Tipo:</label>
-        <input id="mascotaTipo" [value]="mascotaInfo?.tipo" disabled />
+        <label for="mascotaTipo">sexo:</label>
+        <input id="mascotaTipo" [value]="mascotaInfo?.sexo" disabled />
+      </div>
+      <div>
+        <label for="mascotaTipo">edad:</label>
+        <input id="mascotaTipo" [value]="mascotaInfo?.edad" disabled />
+      </div>
+      <div>
+        <label for="mascotaTipo">padecimiento:</label>
+        <input id="mascotaTipo" [value]="mascotaInfo?.padecimiento" disabled />
       </div>
 
       <button type="submit" [disabled]="solicitudForm.invalid || loading">Enviar Solicitud</button>

@@ -18,7 +18,7 @@ export class ApiService {
   }
 
   getMascotaById(id: string) {
-    return this.http.get('http://localhost:3000/mascotas/obtenerMascotasByID/'+id); 
+    return this.http.get('http://localhost:3000/mascotas/obtenerMascotasByID/10'); 
   }
 
   addSolicitud(solicitud: any): Observable<any> {
