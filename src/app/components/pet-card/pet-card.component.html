@@ -1,14 +1,21 @@
-<div class="pet-card">
+<div class="pet-cards-conteiner">
+  <div class="pet-card">
     <img [src]="pet.image" alt="{{ pet.name }}" />
     <h3>{{ pet.name }}</h3>
     <p>Sexo: {{ pet.sexo }}</p>
-    <p>size: {{ pet.zise }}</p>
-    <p>Localizacion: {{ pet.localizacion }}</p>
-  
+    <p>Tamaño: {{ pet.size }}</p>
+    <p>Localización: {{ pet.localizacion }}</p>
+
     <div class="pet-trait">
       {{ pet.trait }}
     </div>
-  
-    <button *ngIf="showButton" [routerLink]="['/adopcion', pet.id]" class="view-more-button">Ver más</button>
+
+    <button
+      *ngIf="showButton"
+      [routerLink]="['/adopcion', pet.id]"
+      class="view-more-button"
+    >
+      Ver más
+    </button>
   </div>
-  
+</div>

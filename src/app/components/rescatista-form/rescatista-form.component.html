@@ -1,9 +1,46 @@
-<div class="adoptante-form">
-    <h2>Descripción adoptante</h2>
-    <p><strong>Nombre:</strong> {{ rescatista.nombre }}</p>
-    <p><strong>Correo Electrónico:</strong> {{ rescatista.email }}</p>
-    <p><strong>Num Teléfono:</strong> {{ rescatista.telefono }}</p>
-    <p><strong>Edad:</strong> {{ rescatista.edad }}</p>
-    <p><strong>Dirección:</strong> {{ rescatista.direccion }}</p>
-  </div>
-  
+<div class="ajustes-container">
+  <h2>Ajustes</h2>
+  <form [formGroup]="rescatistaForm" (ngSubmit)="actualizarDatos()">
+    <div class="form-row">
+      <label>Nombre</label>
+      <input type="text" formControlName="nombre" />
+    </div>
+    <div class="form-row">
+      <label>Apellido Paterno</label>
+      <input type="text" formControlName="apellidoPaterno" />
+    </div>
+    <div class="form-row">
+      <label>Apellido Materno</label>
+      <input type="text" formControlName="apellidoMaterno" />
+    </div>
+    <div class="form-row">
+      <label>Num Telefono</label>
+      <input type="text" formControlName="telefono" />
+    </div>
+    <div class="form-row">
+      <label>Correo Electrónico</label>
+      <input type="email" formControlName="correo" />
+    </div>
+    <div class="form-row">
+      <label>Edad</label>
+      <input type="text" formControlName="edad" />
+    </div>
+    <div class="form-row">
+      <label>Localización</label>
+      <input type="text" formControlName="localizacion" />
+    </div>
+    <div class="form-row">
+      <label>Eres?</label>
+      <div>
+        <label>
+          <input type="radio" formControlName="tipoRescatista" value="rescatista" /> Rescatista independiente
+        </label>
+        <label>
+          <input type="radio" formControlName="tipoRescatista" value="adoptante" /> Busco un hogar a una mascota
+        </label>
+      </div>
+    </div>
+    <p class="info-text">Se recomienda ser mayor de edad, si es caso contrario contacta a tus padres para rellenar esta encuesta.</p>
+    <button type="submit" class="submit-button">Actualizar datos</button>
+  </form>
+</div>

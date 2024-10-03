@@ -1,9 +1,19 @@
+.pet-cards-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columnas */
+  gap: 20px; /* Espacio entre las tarjetas */
+  justify-items: center; /* Centrar las tarjetas en la fila */
+  padding: 20px;
+}
+
 .pet-card {
   border: 1px solid #ccc;
   border-radius: 8px;
-  padding: 16px;
+  padding: 26px;
   text-align: center;
+  background-color: white;
   width: 200px;
+  height: 350px;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   margin: 10px;
 }
@@ -25,14 +35,13 @@
   font-size: 14px;
 }
 
-.pet-card .description {
-  background-color: #4d3227;
-  color: white;
-  padding: 10px 0;
-  font-size: 16px;
+.pet-card .pet-trait {
+  margin-top: 10px;
+  font-style: italic;
+  color: #555;
 }
 
-.pet-card .description button {
+.view-more-button {
   background-color: #e6b655;
   border: none;
   padding: 10px 20px;
