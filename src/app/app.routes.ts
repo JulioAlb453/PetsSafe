@@ -1,12 +1,11 @@
 import { Routes } from '@angular/router';
 
-import { HomeComponent } from './home/home.component';
+import { HomeComponent } from './vistas/home/home.component';
 
-import { PerfilAdoptanteComponent } from './perfil-adoptante/perfil-adoptante.component';
-import { PerfilRescatistaComponent } from './perfil-rescatista/perfil-rescatista.component';
-import { InfoMascotaComponent } from './info-mascota/info-mascota.component';
-import { SolicitudAdopcionComponent } from './solicitud-adopcion/solicitud-adopcion.component';
-
+import { PerfilAdoptanteComponent } from './vistas/perfil-adoptante/perfil-adoptante.component';
+import { PerfilRescatistaComponent } from './vistas/perfil-rescatista/perfil-rescatista.component';
+import { VistaMascotasComponent } from './vistas/vista-mascotas/vista-mascotas.component';
+import { VistaAdopcionComponent } from './vistas/vista-adopcion/vista-adopcion.component';
 
 export const routes: Routes = [
   {
@@ -22,10 +21,10 @@ export const routes: Routes = [
     component: PerfilRescatistaComponent
   },  {
     path: 'inforMascota',
-    component: InfoMascotaComponent
+    component: VistaMascotasComponent
   },  {
     path: 'solicitud',
-    component: SolicitudAdopcionComponent
+    component: VistaAdopcionComponent
   },
  
 ];
