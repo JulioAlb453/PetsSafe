@@ -21,6 +21,14 @@ export class ApiService {
     return this.http.get('http://localhost:3000/mascotas/obtenerMascotasByID/10'); 
   }
 
+  addAdoptador(adoptador: any): Observable<any> {
+    return this.http.post(`${this.baseUrl}/adoptadores`, adoptador);
+  }
+  
+  updateAdoptador(id: string, adoptador: any): Observable<any> {
+    return this.http.put(`${this.baseUrl}/adoptadores/${id}`, adoptador); 
+  }
+
   addSolicitud(solicitud: any): Observable<any> {
     return this.http.post(`${this.baseUrl}/solicitudes/`, solicitud); 
   }

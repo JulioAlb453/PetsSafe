@@ -3,7 +3,7 @@
     <h2>Solicitud de Adopción</h2>
     
     <form [formGroup]="solicitudForm" (ngSubmit)="onSubmit()">
-      <div>
+      <div class="form-row">
         <label for="fechaAdopcion">Fecha de Adopción:</label>
         <input type="date" id="fechaAdopcion" formControlName="fechaAdopcion" />
         <div *ngIf="solicitudForm.get('fechaAdopcion')?.invalid && solicitudForm.get('fechaAdopcion')?.touched">
@@ -13,7 +13,7 @@
         </div>
       </div>
 
-      <div>
+      <div class="form-row">
         <label for="localizacion">Localización:</label>
         <input id="localizacion" formControlName="localizacion" />
         <div *ngIf="solicitudForm.get('localizacion')?.invalid && solicitudForm.get('localizacion')?.touched">
@@ -27,36 +27,36 @@
       </div>
 
       <h3>Información del Rescatista</h3>
-      <div>
+      <div class="form-row">
         <label for="rescatistaNombre">Nombre:</label>
         <input id="rescatistaNombre" [value]="rescatistaInfo?.nombre" disabled />
       </div>
 
-      <div>
+      <div class="form-row">
         <label for="rescatistaTelefono">Teléfono:</label>
         <input id="rescatistaTelefono" [value]="rescatistaInfo?.numTelefono" disabled />
       </div>
 
       <h3>Información de la Mascota</h3>
-      <div>
+      <div class="form-row">
         <label for="mascotaNombre">Nombre:</label>
         <input id="mascotaNombre" [value]="mascotaInfo?.nombre" disabled />
       </div>
 
-      <div>
-        <label for="mascotaTipo">sexo:</label>
-        <input id="mascotaTipo" [value]="mascotaInfo?.sexo" disabled />
+      <div class="form-row">
+        <label for="mascotaSexo">Sexo:</label>
+        <input id="mascotaSexo" [value]="mascotaInfo?.sexo" disabled />
       </div>
-      <div>
-        <label for="mascotaTipo">edad:</label>
-        <input id="mascotaTipo" [value]="mascotaInfo?.edad" disabled />
+      <div class="form-row">
+        <label for="mascotaEdad">Edad:</label>
+        <input id="mascotaEdad" [value]="mascotaInfo?.edad" disabled />
       </div>
-      <div>
-        <label for="mascotaTipo">padecimiento:</label>
-        <input id="mascotaTipo" [value]="mascotaInfo?.padecimiento" disabled />
+      <div class="form-row">
+        <label for="mascotaPadecimiento">Padecimiento:</label>
+        <input id="mascotaPadecimiento" [value]="mascotaInfo?.padecimiento" disabled />
       </div>
 
-      <button type="submit" [disabled]="solicitudForm.invalid || loading">Enviar Solicitud</button>
+      <button class="submit-button" type="submit" [disabled]="solicitudForm.invalid || loading">Enviar Solicitud</button>
       <div *ngIf="loading">Enviando solicitud...</div>
       <div *ngIf="errorMessage">{{ errorMessage }}</div>
     </form>

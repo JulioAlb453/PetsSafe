@@ -3,7 +3,7 @@
   <form [formGroup]="adoptadorForm" (ngSubmit)="onSubmit()">
     <div class="form-row">
       <label>Nombre:</label>
-      <input type="text" formControlName="name" />
+      <input type="text" formControlName="nombre" />
     </div>
     <div class="form-row">
       <label>Apellido Paterno:</label>
@@ -19,12 +19,13 @@
     </div>
     <div class="form-row">
       <label>Correo Electrónico:</label>
-      <input type="email" formControlName="email" />
+      <input type="email" formControlName="correoElectronico" />
     </div>
     <div class="form-row">
       <label>Edad:</label>
       <input type="number" formControlName="edad" min="18" max="100" />
     </div>
-    <button class="submit-button" type="submit" [disabled]="adoptadorForm.invalid">Actualizar datos</button>
+    <button class="submit-button" type="submit" [disabled]="adoptadorForm.invalid">Crear perfil</button>
+    <button class="submit-button" type="submit" [disabled]="adoptadorForm.invalid">Modificar Información</button>
   </form>
 </div>
