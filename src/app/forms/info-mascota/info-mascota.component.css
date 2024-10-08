@@ -1,8 +1,18 @@
 .pet-cards-container {
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: center;
-    gap: 20px; 
-    overflow-x: auto; 
-    box-sizing: border-box;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  padding: 10px;
+}
+
+@media screen and (max-width: 768px) {
+  .pet-cards-container {
+    grid-template-columns: repeat(2, 1fr);
   }
+}
+
+@media screen and (max-width: 480px) {
+  .pet-cards-container {
+    grid-template-columns: 1fr;
+  }
+}

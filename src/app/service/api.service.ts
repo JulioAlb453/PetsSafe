@@ -6,45 +6,56 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class ApiService {
-  private baseUrl = 'http://localhost:3000'; 
+  private baseUrl = 'http://localhost:3000';
 
   constructor(private http: HttpClient) {}
 
   getAdoptadores(): Observable<any> {
-    return this.http.get(`${this.baseUrl}/adoptadores/obtenerAdoptadores/`); 
+    return this.http.get(`${this.baseUrl}/adoptadores/obtenerAdoptadores/`);
   }
   getRescatistaById(id: string) {
-    return this.http.get('http://localhost:3000/rescatista/obtenerRescatistasByID/1'); 
+    return this.http.get(
+      'http://localhost:3000/rescatista/obtenerRescatistasByID/1'
+    );
+  }
+  getRescatista(): Observable<any> {
+    return this.http.get(`${this.baseUrl}/rescatista/obtenerRescatista/`);
+  }
+  
+  getMascotaById(id: string) {
+    return this.http.get(
+      'http://localhost:3000/mascotas/obtenerMascotasByID/10'
+    );
   }
 
-  getMascotaById(id: string) {
-    return this.http.get('http://localhost:3000/mascotas/obtenerMascotasByID/10'); 
+  getMascota(): Observable<any> {
+    return this.http.get(`${this.baseUrl}/mascotas/obtenerMascotas/`);
   }
+
+  
+  getSolicitud(): Observable<any>{
+    return this.http.get(`${this.baseUrl}/solicitudes/obtenerRescatista/`);
+  }   
+ 
+
+
 
   addAdoptador(adoptador: any): Observable<any> {
     return this.http.post(`${this.baseUrl}/adoptadores`, adoptador);
   }
-  
+
   updateAdoptador(id: string, adoptador: any): Observable<any> {
-    return this.http.put(`${this.baseUrl}/adoptadores/${id}`, adoptador); 
+    return this.http.put(`${this.baseUrl}/adoptadores/${id}`, adoptador);
   }
 
   addSolicitud(solicitud: any): Observable<any> {
-    return this.http.post(`${this.baseUrl}/solicitudes/`, solicitud); 
+    return this.http.post(`${this.baseUrl}/solicitudes/`, solicitud);
   }
   agregarMascota(mascota: any): Observable<any> {
     return this.http.post(`${this.baseUrl}/mascotas/`, mascota);
   }
 
-  getMascota(): Observable<any> {
-    return this.http.get(`${this.baseUrl}/mascotas/obtenerMascotas/`); 
-  }
-
   addRescatista(adoptadores: any): Observable<any> {
-    return this.http.post(`${this.baseUrl}/rescatista/`, adoptadores); 
+    return this.http.post(`${this.baseUrl}/rescatista/`, adoptadores);
   }
-  getRescatista(): Observable<any> {
-    return this.http.get(`${this.baseUrl}/rescatista/obtenerRescatista/`); 
-  }
-  
 }
