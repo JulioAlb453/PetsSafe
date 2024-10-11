@@ -13,7 +13,7 @@ import { ApiService } from '../../service/api.service';
 })
 export class MascotaFormComponent implements OnInit {
   mascotaForm: FormGroup;
-  @Input() rescatista: any;
+
 
 
   constructor(private fb: FormBuilder, private ApiService: ApiService) {
@@ -22,11 +22,16 @@ export class MascotaFormComponent implements OnInit {
       edad: ['', [Validators.required, Validators.min(0)]],
       tamaño: ['', Validators.required],
       sexo: ['', Validators.required],
-      padecimiento: ['']
+      padecimiento: ['', Validators.required],
+      personalidad: ['', Validators.required]
     });
   }
 
   ngOnInit(): void {}
+
+  get mascotaFormData(){
+    return this.mascotaForm.value
+  }
 
   agregarMascota() {
     if (this.mascotaForm.valid) {
@@ -41,17 +46,9 @@ export class MascotaFormComponent implements OnInit {
     }
   }
 
-  loadRescatistaDetails(id: string | null){
-    if(id){
-      this.ApiService.getMascotaById(id).subscribe(
-        (data) =>{
-          this.rescatista = data
-        },
-        (error) => {
-          console.error('Error al cargar los detalles del rescatista:', error);
-        }
-      )
-    }
+ 
 
-  }
+
+
+
 }

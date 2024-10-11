@@ -29,7 +29,7 @@ export class SolicitudAdopcionComponent implements OnInit {
   ngOnInit(): void {
     this.loadRescatistaInfo();
     this.loadMascotaInfo();
-  }
+  } 
 
   loadRescatistaInfo() {
     this.apiService.getRescatistaById('1').subscribe(

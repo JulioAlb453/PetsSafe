@@ -31,6 +31,20 @@
     </div>
 
     <div class="form-row">
+      <label>Personalidad:</label>
+      <select formControlName="personalidad">
+        <option value="">Selecciona la Personalidad</option>
+        <option value="leal">Leal</option>
+        <option value="fiestero">Fiestero</option>
+        <option value="tranquilo">Tranquilo</option>
+      </select>
+      <div *ngIf="mascotaForm.get('personalidad')?.invalid && mascotaForm.get('personalidad')?.touched">
+        <small *ngIf="mascotaForm.get('personalidad')?.errors?.['required']">El tamaño es requerido.</small>
+      </div>
+    </div>
+
+
+    <div class="form-row">
       <label>Sexo:</label>
       <div>
         <label>

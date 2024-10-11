@@ -35,6 +35,7 @@ export class RescatistaFormComponent {
       this.apiService.addRescatista(formData).subscribe(
         (response) => {
           console.log('Datos del rescatista enviados a la API:', response);
+          
         },
         (error) => {
           console.error('Error al enviar los datos:', error);

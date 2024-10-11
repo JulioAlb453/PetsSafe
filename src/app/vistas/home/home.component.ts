@@ -4,7 +4,7 @@ import { AdopadorFormComponent } from '../../forms/adopador-form/adopador-form.c
 import { HeaderComponent } from '../../components/header/header.component';
 import { AdoptionSectionComponent } from '../../components/adoption-section/adoption-section.component';
 import { PetCardComponent } from '../../components/pet-card/pet-card.component';
-import { ApiService } from '../../service/api.service'; // Asegúrate de importar el ApiService
+import { ApiService } from '../../service/api.service'; 
 
 @Component({
   selector: 'app-home',
