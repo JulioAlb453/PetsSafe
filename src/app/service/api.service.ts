@@ -37,9 +37,6 @@ export class ApiService {
     return this.http.get(`${this.baseUrl}/solicitudes/obtenerRescatista/`);
   }   
  
-
-
-
   addAdoptador(adoptador: any): Observable<any> {
     return this.http.post(`${this.baseUrl}/adoptadores`, adoptador);
   }

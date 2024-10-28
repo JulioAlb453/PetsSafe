@@ -34,11 +34,11 @@ export class AdopadorFormComponent implements OnInit {
   cargarDatosAdoptador(): void {
     this.apiService.getAdoptadores().subscribe(
       (data) => {
-        const adoptador = data[1]; 
+        const adoptador = data; 
         this.adoptadorForm.patchValue({
           nombre: adoptador.nombre,
-          APaterno: adoptador.APaterno,
           AMaterno: adoptador.AMaterno,
+          APaterno: adoptador.APaterno,
           correoElectronico: adoptador.correoElectronico,
           numTelefono: adoptador.numTelefono,
           edad: adoptador.edad,

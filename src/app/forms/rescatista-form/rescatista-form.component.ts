@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { ApiService } from '../../service/api.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-rescatista-form',
@@ -30,19 +31,47 @@ export class RescatistaFormComponent {
   }
 
   actualizarDatos() {
+    const edad = this.rescatistaForm.get('edad')?.value;
+
+    if (edad && edad < 18) {
+      this.mostrarAlertaEdad();
+      return;
+    }
+
     if (this.rescatistaForm.valid) {
       const formData = this.rescatistaForm.value;
       this.apiService.addRescatista(formData).subscribe(
         (response) => {
+          Swal.fire('Éxito', 'Rescatista registrado correctamente', 'success');
           console.log('Datos del rescatista enviados a la API:', response);
-          
         },
         (error) => {
-          console.error('Error al enviar los datos:', error);
+          if (error.status === 201) {
+            Swal.fire(
+              'Éxito',
+              'Rescatista registrado correctamente',
+              'success'
+            );
+          } else {
+            console.error('Error al enviar los datos:', error);
+            Swal.fire(
+              'Error',
+              'Hubo un problema al registrar el rescatista',
+              'error'
+            );
+          }
         }
       );
     } else {
       console.log('Formulario no válido');
     }
+  }
+  mostrarAlertaEdad() {
+    Swal.fire({
+      title: 'Atención',
+      text: 'Debe ser mayor de 18 años. Si eres menor, pide a tus padres que completen el formulario.',
+      icon: 'warning',
+      confirmButtonText: 'Entendido',
+    });
   }
 }
