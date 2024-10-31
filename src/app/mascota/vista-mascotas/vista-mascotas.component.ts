@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { InfoMascotaComponent } from '../../forms/info-mascota/info-mascota.component';
+import { InfoMascotaComponent } from '../info-mascota/info-mascota.component';
 
 @Component({
   selector: 'app-vista-mascotas',

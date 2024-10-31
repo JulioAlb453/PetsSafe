@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AdopadorFormComponent } from '../../forms/adopador-form/adopador-form.component';
-import { PetCardComponent } from '../../components/pet-card/pet-card.component';
-import { ApiService } from '../../service/api.service';
+import { AdopadorFormComponent } from '../adoptador/adopador-form/adopador-form.component';
+import { PetCardComponent } from '../components/pet-card/pet-card.component';
+import { ApiService } from '../service/api.service';
 import { HomeModule } from './home.module'; 
 
 @Component({

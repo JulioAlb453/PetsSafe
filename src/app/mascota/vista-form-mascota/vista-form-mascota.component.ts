@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { MascotaFormComponent } from '../../forms/mascota-form/mascota-form.component';
+import { MascotaFormComponent } from '../mascota-form/mascota-form.component';
 
 
 @Component({

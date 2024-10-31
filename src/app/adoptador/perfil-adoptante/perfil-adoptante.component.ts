@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AdopadorFormComponent } from '../../forms/adopador-form/adopador-form.component';
+import { AdopadorFormComponent } from '../../adoptador/adopador-form/adopador-form.component';
 @Component({
   selector: 'app-perfil-adoptante',
   standalone: true,

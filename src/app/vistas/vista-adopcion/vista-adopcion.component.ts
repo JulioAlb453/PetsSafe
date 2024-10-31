@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { SolicitudAdopcionComponent } from '../../forms/solicitud-adopcion/solicitud-adopcion.component';
+import { SolicitudAdopcionComponent } from '../../mascota/solicitud-adopcion/solicitud-adopcion.component';
 
 @Component({
   selector: 'app-vista-adopcion',
