@@ -7,7 +7,16 @@ import { VistaMascotasComponent } from './mascota/vista-mascotas/vista-mascotas.
 import { VistaAdopcionComponent } from './vistas/vista-adopcion/vista-adopcion.component';
 import { AdoptionPageComponent } from './vistas/adoption-page/adoption-page.component';
 import { VistaFormMascotaComponent } from './mascota/vista-form-mascota/vista-form-mascota.component';
+import { LoginComponent } from './login/login/login.component';
+import { RegisterComponent } from './login/register/register.component';
 export const routes: Routes = [
+  {
+    path: 'login',
+    component: LoginComponent,
+  }, {
+    path: 'register',
+    component: RegisterComponent,
+  },
   {
     path: '',
     component: HomeComponent,

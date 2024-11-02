@@ -1,1 +1,27 @@
-<p>login works!</p>
+<div class="login-container">
+    <h2>Iniciar sesión</h2>
+    <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+      <div>
+        <label for="nombreUsuario">Nombre de usuario</label>
+        <input id="nombreUsuario" formControlName="nombreUsuario" type="text" />
+      </div>
+  
+      <div>
+        <label for="contrasena">Contraseña</label>
+        <input id="contrasena" formControlName="contrasena" type="password" />
+      </div>
+  
+      <div>
+        <label for="tipoUsuario">Tipo de usuario</label>
+        <select id="tipoUsuario" formControlName="tipoUsuario">
+          <option value="adoptador">Adoptador</option>
+          <option value="rescatista">Rescatista</option>
+        </select>
+      </div>
+  
+      <button type="submit" [disabled]="loginForm.invalid">Iniciar sesión</button>
+  
+      <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
+    </form>
+  </div>
+  

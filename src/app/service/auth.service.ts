@@ -6,10 +6,17 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
+
   private baseUrl = 'http://localhost:3000';
   constructor(private http: HttpClient) {}
 
   login(nombreUsuario: string, contrasena: string, tipoUsuario: string): Observable<any> {
-    return this.http.post(`${this.baseUrl}/login`, { nombreUsuario, contrasena, tipoUsuario });
+    const loginData = { nombreUsuario, contrasena, tipoUsuario };
+    return this.http.post(`${this.baseUrl}/usuarios/login`, loginData);
+  }
+  register(nombreUsuario: string, contrasena: string, tipoUsuario: string): Observable<any> {
+    const endpoint = tipoUsuario === 'adoptador' ? '/usuarios/register' : '/rescatistas/register';
+    const userData = { nombreUsuario, contrasena , tipoUsuario};
+    return this.http.post(`${this.baseUrl}${endpoint}`, userData);
   }
 }

@@ -1,0 +1,49 @@
+<div class="conteiner-register-form">
+  <div class="screen">
+    <div class="screen__content">
+      <form
+        class="register-form"
+        [formGroup]="registerForm"
+        (ngSubmit)="onRegister()"
+      >
+        <div class="form-content">
+          <div class="register__field">
+            <label for="nombreUsuario">Nombre de Usuario:</label>
+            <input
+              id="nombreUsuario"
+              formControlName="nombreUsuario"
+              type="text"
+              class="register__input"
+            />
+  
+  
+            
+          </div>
+          <div class="register__field">
+            <label for="contrasena">Contraseña:</label>
+            <input
+              id="contrasena"
+              formControlName="contrasena"
+              type="password"
+              class="register__input"
+            />
+          </div>
+          <div class="register__field">
+            <label for="tipoUsuario">Tipo de Usuario:</label>
+            <select id="tipoUsuario" formControlName="tipoUsuario">
+              <option value="adoptador">Adoptador</option>
+              <option value="rescatista">Rescatista</option>
+            </select>
+          </div>
+          <button
+            type="submit"
+            [disabled]="registerForm.invalid"
+            class="login__submit"
+          >
+            Registrarse
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
