@@ -34,6 +34,8 @@ export class LoginComponent {
       this.authService.login(nombreUsuario, contrasena, tipoUsuario).subscribe(
         (response) => {
           alert(`Login exitoso como ${tipoUsuario}`);
+          console.log(response);
+          localStorage.setItem('Token', response.token)
           this.router.navigate(['/home']);
         },
         (error) => {
@@ -43,5 +45,8 @@ export class LoginComponent {
         }
       );
     }
+  }
+  goToRegister() {
+    this.router.navigate(['/register']);
   }
 }

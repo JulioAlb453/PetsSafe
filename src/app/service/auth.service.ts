@@ -11,12 +11,19 @@ export class AuthService {
   constructor(private http: HttpClient) {}
 
   login(nombreUsuario: string, contrasena: string, tipoUsuario: string): Observable<any> {
-    const loginData = { nombreUsuario, contrasena, tipoUsuario };
-    return this.http.post(`${this.baseUrl}/usuarios/login`, loginData);
+    return this.http.post(`${this.baseUrl}/usuarios/login`, { nombreUsuario, contrasena, tipoUsuario });
   }
-  register(nombreUsuario: string, contrasena: string, tipoUsuario: string): Observable<any> {
-    const endpoint = tipoUsuario === 'adoptador' ? '/usuarios/register' : '/rescatistas/register';
-    const userData = { nombreUsuario, contrasena , tipoUsuario};
+  register(userData: any): Observable<any> {
+    const endpoint = userData.tipoUsuario === 'adoptador' ? '/usuarios/register' : '/usuarios/register';
+    
+    if (userData.tipoUsuario === 'adoptador') {
+      delete userData.localizacion;
+      delete userData.tipoRescatista;
+    } else if (userData.tipoUsuario === 'rescatista') {
+      delete userData.tipoUsuario;  
+    }
+
+    console.log(userData)
     return this.http.post(`${this.baseUrl}${endpoint}`, userData);
   }
 }

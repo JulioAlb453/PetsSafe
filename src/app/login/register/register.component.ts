@@ -23,19 +23,26 @@ export class RegisterComponent {
     this.registerForm = this.fb.group({
       nombreUsuario: ['', Validators.required],
       contrasena: ['', [Validators.required, Validators.minLength(6)]],
-      tipoUsuario: ['adoptador', Validators.required]  // Por defecto, tipo adoptador
+      nombre: ['', Validators.required],
+      AMaterno: ['', Validators.required],
+      APaterno: ['', Validators.required],
+      edad: ['', [Validators.required, Validators.min(18)]],
+      correoElectronico: ['', [Validators.required, Validators.email]],
+      numTelefono: ['', [Validators.required, Validators.pattern("^[0-9]{10}$")]],
+      tipoUsuario: ['adoptador', Validators.required], 
+      localizacion: [''], 
+      tipoRescatista: ['independiente']  
     });
   }
-
   onRegister() {
-    console.log('Datos a enviar:', this.registerForm.value);
     if (this.registerForm.valid) {
-      const { nombreUsuario, contrasena, tipoUsuario } = this.registerForm.value;
-      this.authService.register(nombreUsuario, contrasena, tipoUsuario).subscribe(
+      const formData = this.registerForm.value;
+      this.authService.register(formData).subscribe(
         (response) => {
-          console.log('Formulario válido, continuando con el registro...');
-          alert(`Registro exitoso como ${tipoUsuario}`);
-          this.router.navigate(['/login']); 
+          alert(`Registro exitoso como ${formData.tipoUsuario}`);
+          setTimeout(() => {
+            this.router.navigate(['/login']);  
+          }, 500); 
         },
         (error) => {
           this.errorMessage = 'Hubo un error en el registro. Inténtalo de nuevo.';
@@ -43,4 +50,5 @@ export class RegisterComponent {
       );
     }
   }
+  
 }

@@ -1,27 +1,57 @@
 <div class="login-container">
-    <h2>Iniciar sesión</h2>
-    <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
-      <div>
-        <label for="nombreUsuario">Nombre de usuario</label>
-        <input id="nombreUsuario" formControlName="nombreUsuario" type="text" />
+  <div class="screen">
+    <div class="scree__content">
+      <div class="login-content">
+        <h2>Iniciar sesión</h2>
+        <form
+          [formGroup]="loginForm"
+          (ngSubmit)="onLogin()"
+          class="form-content"
+        >
+          <div>
+            <div class="login__field">
+              <label for="nombreUsuario">Nombre de usuario</label>
+              <input
+                id="nombreUsuario"
+                formControlName="nombreUsuario"
+                type="text"
+                class="login__input"
+              />
+            </div>
+          </div>
+
+          <div class="login__field">
+            <label for="contrasena">Contraseña</label>
+            <input
+              id="contrasena"
+              formControlName="contrasena"
+              type="password"
+              class="login__input"
+            />
+          </div>
+
+          <div class="login__field">
+            <label for="tipoUsuario">Tipo de usuario</label>
+            <select id="tipoUsuario" formControlName="tipoUsuario">
+              <option value="adoptador">Adoptador</option>
+              <option value="rescatista">Rescatista</option>
+            </select>
+          </div>
+
+          <button
+            type="submit"
+            [disabled]="loginForm.invalid"
+            class="login__submit"
+          >
+            Iniciar sesión
+          </button>
+
+          <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
+          <button type="button" class="login__submit" (click)="goToRegister()">
+            Registrarse
+          </button>
+        </form>
       </div>
-  
-      <div>
-        <label for="contrasena">Contraseña</label>
-        <input id="contrasena" formControlName="contrasena" type="password" />
-      </div>
-  
-      <div>
-        <label for="tipoUsuario">Tipo de usuario</label>
-        <select id="tipoUsuario" formControlName="tipoUsuario">
-          <option value="adoptador">Adoptador</option>
-          <option value="rescatista">Rescatista</option>
-        </select>
-      </div>
-  
-      <button type="submit" [disabled]="loginForm.invalid">Iniciar sesión</button>
-  
-      <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
-    </form>
+    </div>
   </div>
-  
+</div>

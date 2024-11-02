@@ -1,32 +1,39 @@
 <div class="conteiner-register-form">
   <div class="screen">
     <div class="screen__content">
-      <form
-        class="register-form"
-        [formGroup]="registerForm"
-        (ngSubmit)="onRegister()"
-      >
+      <form class="register-form" [formGroup]="registerForm" (ngSubmit)="onRegister()">
         <div class="form-content">
           <div class="register__field">
             <label for="nombreUsuario">Nombre de Usuario:</label>
-            <input
-              id="nombreUsuario"
-              formControlName="nombreUsuario"
-              type="text"
-              class="register__input"
-            />
-  
-  
-            
+            <input id="nombreUsuario" formControlName="nombreUsuario" type="text" class="register__input" />
           </div>
           <div class="register__field">
             <label for="contrasena">Contraseña:</label>
-            <input
-              id="contrasena"
-              formControlName="contrasena"
-              type="password"
-              class="register__input"
-            />
+            <input id="contrasena" formControlName="contrasena" type="password" class="register__input" />
+          </div>
+          <div class="register__field">
+            <label for="nombre">Nombre:</label>
+            <input id="nombre" formControlName="nombre" type="text" class="register__input" />
+          </div>
+          <div class="register__field">
+            <label for="AMaterno">Apellido Materno:</label>
+            <input id="AMaterno" formControlName="AMaterno" type="text" class="register__input" />
+          </div>
+          <div class="register__field">
+            <label for="APaterno">Apellido Paterno:</label>
+            <input id="APaterno" formControlName="APaterno" type="text" class="register__input" />
+          </div>
+          <div class="register__field">
+            <label for="edad">Edad:</label>
+            <input id="edad" formControlName="edad" type="number" class="register__input" />
+          </div>
+          <div class="register__field">
+            <label for="correoElectronico">Correo Electrónico:</label>
+            <input id="correoElectronico" formControlName="correoElectronico" type="email" class="register__input" />
+          </div>
+          <div class="register__field">
+            <label for="numTelefono">Número de Teléfono:</label>
+            <input id="numTelefono" formControlName="numTelefono" type="text" class="register__input" />
           </div>
           <div class="register__field">
             <label for="tipoUsuario">Tipo de Usuario:</label>
@@ -35,11 +42,20 @@
               <option value="rescatista">Rescatista</option>
             </select>
           </div>
-          <button
-            type="submit"
-            [disabled]="registerForm.invalid"
-            class="login__submit"
-          >
+          <div *ngIf="registerForm.get('tipoUsuario')?.value === 'rescatista'">
+            <div class="register__field">
+              <label for="localizacion">Localización:</label>
+              <input id="localizacion" formControlName="localizacion" type="text" class="register__input" />
+            </div>
+            <div class="register__field">
+              <label for="tipoRescatista">Tipo de rescatista:</label>
+              <select id="tipoUsuario" formControlName="tipoUsuario">
+                <option value="independiente">Independiente</option>
+                <option value="organizacion">Organización</option>
+              </select>
+            </div>
+          </div>
+          <button type="submit" [disabled]="registerForm.invalid" class="register__submit" >
             Registrarse
           </button>
         </div>
