@@ -1,31 +1,30 @@
-<div class="ajustes-container">
-  <h2>Perfil Adoptador</h2>
-  <form [formGroup]="adoptadorForm" (ngSubmit)="onSubmit()">
-    <div class="form-row">
-      <label>Nombre:</label>
-      <input type="text" formControlName="nombre" />
-    </div>
-    <div class="form-row">
-      <label>Apellido Paterno:</label>
-      <input type="text" formControlName="APaterno" />
-    </div>
-    <div class="form-row">
-      <label>Apellido Materno:</label>
-      <input type="text" formControlName="AMaterno" />
-    </div>
-    <div class="form-row">
-      <label>Teléfono:</label>
-      <input type="text" formControlName="numTelefono" />
-    </div>
-    <div class="form-row">
-      <label>Correo Electrónico:</label>
-      <input type="email" formControlName="correoElectronico" />
-    </div>
-    <div class="form-row">
-      <label>Edad:</label>
-      <input type="number" formControlName="edad" min="18" max="100" />
-    </div>
-    <button class="submit-button" type="submit" [disabled]="adoptadorForm.invalid">Crear perfil</button>
-    <button class="submit-button" type="submit" [disabled]="adoptadorForm.invalid">Modificar Información</button>
-  </form>
-</div>
+
+  <div class="ajustes-container">
+    <h2>Perfil Adoptador</h2>
+    <form [formGroup]="adoptadorForm" novalidate>
+      <div class="form-row">
+        <label for="nombre">Nombre:</label>
+        <input id="nombre" value="" type="text" formControlName="nombre" aria-label="Nombre" readonly />
+      </div>
+      <div class="form-row">
+        <label for="APaterno">Apellido Paterno:</label>
+        <input id="APaterno" type="text" formControlName="APaterno" aria-label="Apellido Paterno" readonly />
+      </div>
+      <div class="form-row">
+        <label for="AMaterno">Apellido Materno:</label>
+        <input id="AMaterno" type="text" formControlName="AMaterno" aria-label="Apellido Materno" readonly />
+      </div>
+      <div class="form-row">
+        <label for="numTelefono">Teléfono:</label>
+        <input id="numTelefono" type="text" formControlName="numTelefono" aria-label="Teléfono" readonly />
+      </div>
+      <div class="form-row">
+        <label for="correoElectronico">Correo Electrónico:</label>
+        <input id="correoElectronico" type="email" formControlName="correoElectronico" aria-label="Correo Electrónico" readonly />
+      </div>
+      <div class="form-row">
+        <label for="edad">Edad:</label>
+        <input id="edad" type="number" formControlName="edad" aria-label="Edad" readonly />
+      </div>
+    </form>
+  </div>
