@@ -1,9 +1,9 @@
+<!-- info-mascota.component.html -->
 <div class="pet-cards-container">
   <app-pet-card
     *ngFor="let pet of pets"
     [pet]="pet"
     [showButton]="true"
-   
-
+    [rescatistaInfo]="rescatista" 
   ></app-pet-card>
 </div>

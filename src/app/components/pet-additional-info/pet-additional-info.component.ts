@@ -9,6 +9,6 @@ import { Component, Input  } from '@angular/core';
 })
 export class PetAdditionalInfoComponent {
 
-  @Input() info: any;
+
 
 }

@@ -1,58 +1,66 @@
-import { Component, OnInit } from '@angular/core';
+// info-mascota.component.ts
+import { Component, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { PetCardComponent } from '../../components/pet-card/pet-card.component';
 import { CommonModule } from '@angular/common';
-import { ApiService } from '../../service/api.service'; 
-
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ApiService } from '../../service/api.service';
 
 @Component({
   selector: 'app-info-mascota',
   standalone: true,
   imports: [PetCardComponent, CommonModule],
   templateUrl: './info-mascota.component.html',
-  styleUrls: ['./info-mascota.component.css'] 
+  styleUrls: ['./info-mascota.component.css'],
 })
-export class InfoMascotaComponent implements OnInit {
-  pets: any[] = []; 
-  rescatistaInfo: any; 
-  
+export class InfoMascotaComponent implements OnChanges {
+  pets: any[] = [];
+  rescatistaInfo: any;
 
-  constructor(private apiService: ApiService) { } 
+  @Input() rescatista: any;
+  rescatistaForm: FormGroup;
 
+  constructor(private fb: FormBuilder, private apiService: ApiService) {
+    this.rescatistaForm = this.fb.group({
+      nombre: ['', Validators.required],
+      APaterno: ['', Validators.required],
+      AMaterno: ['', Validators.required],
+      numTelefono: ['', Validators.required],
+      correoElectronico: ['', [Validators.required, Validators.email]],
+      edad: ['', Validators.required],
+      localizacion: ['', Validators.required],
+      tipoRescatista: ['', Validators.required],
+    });
+  }
   ngOnInit(): void {
     this.loadPets();
-    this.loadRescatista();
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['rescatista'] && this.rescatista) {
+      this.rescatistaForm.patchValue({
+        nombre: this.rescatista.nombre,
+        APaterno: this.rescatista.APaterno,
+        AMaterno: this.rescatista.AMaterno,
+        numTelefono: this.rescatista.numTelefono,
+        correoElectronico: this.rescatista.correoElectronico,
+        edad: this.rescatista.edad,
+        localizacion: this.rescatista.localizacion,
+        tipoRescatista: this.rescatista.tipoRescatista,
+      });
+      console.log('Datos en el formulario:', this.rescatistaForm.value); 
+    }
+    this.loadPets();
+
   }
 
   loadPets(): void {
     this.apiService.getMascota().subscribe(
       (data) => {
-        this.pets = data; 
+        console.log(data)
+        this.pets = data;
       },
       (error) => {
-        console.error('Error al cargar las mascotas:', error); 
-      }
-    );
-  }
-  loadMascotaInfo() {
-    this.apiService.getRescatista().subscribe(
-      (info) => {
-        console.log(info);
-        this.rescatistaInfo = info; 
-      },
-      (error) => {
-        console.error('Error al cargar la información de la mascota:', error);
-      }
-    );
-  }
- 
-  loadRescatista(): void {
-    this.apiService.getRescatista().subscribe(
-      (info) => {
-        console.log(info);
-        this.rescatistaInfo = info; 
-      },
-      (error) => {
-        console.error('Error al cargar la información del rescatista:', error);
+        console.error('Error al cargar las mascotas:', error);
       }
     );
   }

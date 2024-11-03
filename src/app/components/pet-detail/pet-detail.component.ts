@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { ApiService } from '../../service/api.service';
@@ -12,13 +12,11 @@ import { CommonModule } from '@angular/common';
 })
 export class PetDetailComponent {
   @Input() mascota: any;
-
   @Input() rescatista:any;
-  
-  
- 
- 
+
   get tamano(): string {
     return this.mascota?.tamaño;
   }
+ 
+
 }
