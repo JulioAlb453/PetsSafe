@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from '../../service/auth.service';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule],
+  imports: [ReactiveFormsModule, CommonModule, RouterLink],
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
@@ -36,7 +36,9 @@ export class RegisterComponent {
   }
   onRegister() {
     if (this.registerForm.valid) {
+      
       const formData = this.registerForm.value;
+      console.log(formData);
       this.authService.register(formData).subscribe(
         (response) => {
           alert(`Registro exitoso como ${formData.tipoUsuario}`);

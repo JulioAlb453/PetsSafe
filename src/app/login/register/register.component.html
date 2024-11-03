@@ -48,16 +48,17 @@
               <input id="localizacion" formControlName="localizacion" type="text" class="register__input" />
             </div>
             <div class="register__field">
-              <label for="tipoRescatista">Tipo de rescatista:</label>
-              <select id="tipoUsuario" formControlName="tipoUsuario">
+              <label for="tipoRescatista">Tipo de Rescatista:</label>
+              <select id="tipoRescatista" formControlName="tipoRescatista">
                 <option value="independiente">Independiente</option>
                 <option value="organizacion">Organización</option>
               </select>
             </div>
           </div>
-          <button type="submit" [disabled]="registerForm.invalid" class="register__submit" >
+          <button type="submit" [disabled]="registerForm.invalid" class="register__submit">
             Registrarse
           </button>
+          <button type="button" [routerLink]="['/login']" class="register__submit">Ir al Login</button>
         </div>
       </form>
     </div>
