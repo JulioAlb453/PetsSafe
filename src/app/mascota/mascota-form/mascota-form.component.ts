@@ -20,6 +20,7 @@ export class MascotaFormComponent implements OnInit {
     this.mascotaForm = this.fb.group({
       nombre: ['', Validators.required],
       edad: ['', [Validators.required, Validators.min(0)]],
+      categoria: ['', [Validators.required, Validators.min(0)]],
       tamaño: ['', Validators.required],
       sexo: ['', Validators.required],
       padecimiento: ['', Validators.required],

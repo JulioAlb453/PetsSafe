@@ -89,7 +89,9 @@ export class AdoptionPageComponent implements OnChanges {
           (data) => {
             console.log('Datos del rescatista:', data);
             this.rescatista = data; 
+            
           },
+          
           (error) => {
             console.error('Error al cargar los datos del rescatista:', error);
           }
@@ -105,6 +107,7 @@ export class AdoptionPageComponent implements OnChanges {
   get tamano(): string {
     return this.mascota?.tamaño;
   }
+  
 
   decodeToken(token: string): any {
     const payload = JSON.parse(atob(token.split('.')[1])); 

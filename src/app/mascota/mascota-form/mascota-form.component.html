@@ -18,6 +18,19 @@
     </div>
 
     <div class="form-row">
+      <label>Categoria:</label>
+      <select formControlName="categoria">
+        <option value="">Selecciona una categoria</option>
+        <option value="perro">Perro</option>
+        <option value="gato">Gato</option>
+        <option value="periquito">Periquito</option>
+      </select>
+      <div *ngIf="mascotaForm.get('categoria')?.invalid && mascotaForm.get('categoria')?.touched">
+        <small *ngIf="mascotaForm.get('categoria')?.errors?.['required']">El categoria es requerido.</small>
+      </div>
+    </div>
+
+    <div class="form-row">
       <label>Tamaño:</label>
       <select formControlName="tamaño">
         <option value="">Selecciona un tamaño</option>

@@ -1,13 +1,20 @@
 <div class="container">
   <div class="content-wrapper">
     <h2>Solicitud de Adopción</h2>
-    
-    <form [formGroup]="solicitudForm" (ngSubmit)="onSubmit()">
+
+    <form [formGroup]="rescatistaForm">
       <div class="form-row">
         <label for="fechaAdopcion">Fecha de Adopción:</label>
         <input type="date" id="fechaAdopcion" formControlName="fechaAdopcion" />
-        <div *ngIf="solicitudForm.get('fechaAdopcion')?.invalid && solicitudForm.get('fechaAdopcion')?.touched">
-          <small *ngIf="solicitudForm.get('fechaAdopcion')?.errors?.['required']">
+        <div
+          *ngIf="
+            rescatistaForm.get('fechaAdopcion')?.invalid &&
+            rescatistaForm.get('fechaAdopcion')?.touched
+          "
+        >
+          <small
+            *ngIf="rescatistaForm.get('fechaAdopcion')?.errors?.['required']"
+          >
             La fecha es requerida.
           </small>
         </div>
@@ -16,12 +23,23 @@
       <div class="form-row">
         <label for="localizacion">Localización:</label>
         <input id="localizacion" formControlName="localizacion" />
-        <div *ngIf="solicitudForm.get('localizacion')?.invalid && solicitudForm.get('localizacion')?.touched">
-          <small *ngIf="solicitudForm.get('localizacion')?.errors?.['required']">
+        <div
+          *ngIf="
+            rescatistaForm.get('localizacion')?.invalid &&
+            rescatistaForm.get('localizacion')?.touched
+          "
+        >
+          <small
+            *ngIf="rescatistaForm.get('localizacion')?.errors?.['required']"
+          >
             La localización es requerida.
           </small>
-          <small *ngIf="solicitudForm.get('localizacion')?.errors?.['minlength']">
-            La localización debe tener al menos {{ solicitudForm.get('localizacion')?.errors?.['minlength'].requiredLength }} caracteres.
+          <small
+            *ngIf="rescatistaForm.get('localizacion')?.errors?.['minlength']"
+          >
+            La localización debe tener al menos
+            {{ rescatistaForm.get('localizacion')?.errors?.['minlength'].requiredLength }}
+            caracteres.
           </small>
         </div>
       </div>
@@ -29,36 +47,77 @@
       <h3>Información del Rescatista</h3>
       <div class="form-row">
         <label for="rescatistaNombre">Nombre:</label>
-        <input id="rescatistaNombre" [value]="rescatistaInfo?.nombre" disabled />
+        <input id="rescatistaNombre" [value]="rescatista?.nombre" disabled />
+      </div>
+
+      <div class="form-row">
+        <label for="rescatistaAPaterno">Apellido Paterno:</label>
+        <input
+          id="rescatistaAPaterno"
+          [value]="rescatista?.APaterno"
+          disabled
+        />
+      </div>
+      <div class="form-row">
+        <label for="rescatistaAMaterno">Apellido Materno:</label>
+        <input
+          id="rescatistaAMaterno"
+          [value]="rescatista?.AMaterno"
+          disabled
+        />
       </div>
 
       <div class="form-row">
         <label for="rescatistaTelefono">Teléfono:</label>
-        <input id="rescatistaTelefono" [value]="rescatistaInfo?.numTelefono" disabled />
+        <input
+          id="rescatistaTelefono"
+          [value]="rescatista?.numTelefono"
+          disabled
+        />
+      </div>
+      <div class="form-row">
+        <label for="rescatistaLocalizacion">Localizacion</label>
+        <input
+          id="rescatistaLocalizacion"
+          [value]="rescatista?.localizacion"
+          disabled
+        />
       </div>
 
       <h3>Información de la Mascota</h3>
       <div class="form-row">
         <label for="mascotaNombre">Nombre:</label>
-        <input id="mascotaNombre" [value]="mascotaInfo?.nombre" disabled />
+        <input id="mascotaNombre" [value]="mascota?.nombre" disabled />
       </div>
 
       <div class="form-row">
         <label for="mascotaSexo">Sexo:</label>
-        <input id="mascotaSexo" [value]="mascotaInfo?.sexo" disabled />
-      </div>
-      <div class="form-row">
-        <label for="mascotaEdad">Edad:</label>
-        <input id="mascotaEdad" [value]="mascotaInfo?.edad" disabled />
-      </div>
-      <div class="form-row">
-        <label for="mascotaPadecimiento">Padecimiento:</label>
-        <input id="mascotaPadecimiento" [value]="mascotaInfo?.padecimiento" disabled />
+        <input id="mascotaSexo" [value]="mascota?.sexo" disabled />
       </div>
 
-      <button class="submit-button" type="submit" [disabled]="solicitudForm.invalid || loading">Enviar Solicitud</button>
-      <div *ngIf="loading">Enviando solicitud...</div>
-      <div *ngIf="errorMessage">{{ errorMessage }}</div>
+      <div class="form-row">
+        <label for="mascotaEdad">Edad:</label>
+        <input id="mascotaEdad" [value]="mascota?.edad" disabled />
+      </div>
+
+      <div class="form-row">
+        <label for="mascotaPadecimiento">Padecimiento:</label>
+        <input
+          id="mascotaPadecimiento"
+          [value]="mascota?.padecimiento"
+          disabled
+        />
+      </div>
+
+      <button
+        class="submit-button"
+        type="submit"
+        [disabled]="rescatistaForm.invalid"
+      >
+        Enviar Solicitud
+      </button>
+      <!-- <div *ngIf="loading">Enviando solicitud...</div>
+      <div *ngIf="errorMessage">{{ errorMessage }}</div> -->
     </form>
   </div>
 </div>
