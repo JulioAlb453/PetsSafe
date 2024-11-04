@@ -22,4 +22,7 @@ export class PetCardComponent {
   get tamano(): string {
     return this.pet.tamaño;
   }
+  get imagen():string{
+    return "http://localhost:3000/"+this.pet.imagen
+  }
 }
