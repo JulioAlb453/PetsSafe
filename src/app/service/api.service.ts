@@ -29,7 +29,7 @@ export class ApiService {
   }
 
   getMascota(): Observable<any> {
-    return this.http.get(`${this.baseUrl}/mascotas/obtenerMascotas/`);
+    return this.http.get(`${this.baseUrl}/mascotas/obtenermascotas`);
   }
 
   getSolicitud(): Observable<any> {
@@ -54,4 +54,16 @@ export class ApiService {
   addRescatista(adoptadores: any): Observable<any> {
     return this.http.post(`${this.baseUrl}/rescatista/`, adoptadores);
   }
+ 
+  addDonacion(donacion: any): Observable<any> {
+    return this.http.post(`${this.baseUrl}/donaciones/`, donacion);
+  }
+  aceptarSolicitud(id: any): Observable<any> {
+    return this.http.post(`${this.baseUrl}/solicitudes/aprobar/`+ id, null);
+  }
+  rechazarSolicitud(id: any): Observable<any> {
+    return this.http.post(`${this.baseUrl}/solicitudes/rechazar/`+ id, null);
+  }
+
+
 }

@@ -9,11 +9,22 @@ import { AdoptionPageComponent } from './vistas/adoption-page/adoption-page.comp
 import { VistaFormMascotaComponent } from './mascota/vista-form-mascota/vista-form-mascota.component';
 import { LoginComponent } from './login/login/login.component';
 import { RegisterComponent } from './login/register/register.component';
+import { HistorialRescatistaComponent } from './rescatista/historial-rescatista/historial-rescatista.component';
+import { DonacionComponent } from './adoptador/donacion/donacion.component';
 export const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
-  }, {
+  }, 
+  {
+    path: 'donacion',
+    component: DonacionComponent,
+  },
+  {
+    path: 'historialRescatista',
+    component: HistorialRescatistaComponent,
+  },
+  {
     path: 'register',
     component: RegisterComponent,
   },
