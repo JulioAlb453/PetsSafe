@@ -17,6 +17,18 @@ export class PetDetailComponent {
   get tamano(): string {
     return this.mascota?.tamaño;
   }
- 
+  constructor(private apiService: ApiService){
 
+  }
+  obtenerMascotas() {
+    this.apiService.getMascota().subscribe(
+      (mascotas) => {
+        console.log(mascotas);
+        this.mascota = mascotas;
+      },
+      (error) => {
+        console.error('Error al obtener mascotas', error);
+      }
+    );
+  }
 }

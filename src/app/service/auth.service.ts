@@ -6,6 +6,9 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class AuthService {
+  decodeToken(token: string) {
+    throw new Error('Method not implemented.');
+  }
   private baseUrl = 'http://localhost:3000';
   constructor(private http: HttpClient) {}
 

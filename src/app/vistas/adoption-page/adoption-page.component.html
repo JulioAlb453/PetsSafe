@@ -1,15 +1,14 @@
 <div class="adoption-page">
   <h1>Mascota en adopción</h1>
 
-  <app-pet-detail [mascota]="mascota" ></app-pet-detail>
-  <!-- <app-pet-additional-info [info]="rescatista"></app-pet-additional-info> -->
+  <app-pet-detail [mascota]="mascota"></app-pet-detail>
 
   <h3>Información del Rescatista</h3>
-  <div *ngIf="rescatista">
-    <p><strong>Nombre:</strong> {{ rescatista.nombre }}</p>
-    <p><strong>Email:</strong> {{ rescatista.correoElectronico }}</p>
-    <p><strong>Teléfono:</strong> {{ rescatista.numTelefono }}</p>
-    <p><strong>Edad:</strong> {{ rescatista.edad }}</p>
-    <p><strong>Dirección:</strong> {{ rescatista.localizacion }}</p>
-  </div>  
+  <div *ngIf="rescatista" class="rescatista-info">
+      <p><strong>Nombre:</strong> {{ rescatista.nombre }}</p>
+      <p><strong>Email:</strong> {{ rescatista.correoElectronico }}</p>
+      <p><strong>Teléfono:</strong> {{ rescatista.numTelefono }}</p>
+      <p><strong>Edad:</strong> {{ rescatista.edad }}</p>
+      <p><strong>Dirección:</strong> {{ rescatista.localizacion }}</p>
+  </div>
 </div>

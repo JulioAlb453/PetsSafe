@@ -1,4 +1,4 @@
-import { Component, OnInit, SimpleChanges } from '@angular/core';
+import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
 import { HistorialService } from '../../service/historial-service.service';
 import { ApiService } from '../../service/api.service';
 import { CommonModule } from '@angular/common';
@@ -14,6 +14,8 @@ export class HistorialRescatistaComponent implements OnChanges {
   mascotas: any[] = [];
   donaciones: any[] = [];
   solicitudes: any[] = [];
+  pets: any;
+
   userAdoptadorId: any;
 
   constructor(
@@ -43,7 +45,6 @@ export class HistorialRescatistaComponent implements OnChanges {
     this.historialService
     .getDonacionesYSolicitudesPorMascota(this.userAdoptadorId)
     .subscribe((data) => {
-      
       this.mascotas = data
       console.log(this.mascotas)
     });
@@ -72,5 +73,19 @@ export class HistorialRescatistaComponent implements OnChanges {
       alert('solicitud rechazada')
     })
     
+  }
+  loadPets(): void {
+    this.apiService.getMascota().subscribe(
+      (data) => {
+        console.log(data)
+        this.pets = data;
+      },
+      (error) => {
+        console.error('Error al cargar las mascotas:', error);
+      }
+    );
+  }
+  get imagen():string{
+    return "http://localhost:3000/"+this.pets.imagen
   }
 }

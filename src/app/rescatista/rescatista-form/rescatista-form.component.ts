@@ -25,8 +25,8 @@ export class RescatistaFormComponent implements OnChanges {
       numTelefono: ['', Validators.required],
       correoElectronico: ['', [Validators.required, Validators.email]],
       edad: ['', Validators.required],
-      localizacion: ['', Validators.required],
-      tipoRescatista: ['', Validators.required],
+      localizacion: ['tuxtla'],
+      tipoRescatista: [''],
     });
   }
 

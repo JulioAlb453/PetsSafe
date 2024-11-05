@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from '../../service/api.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-donacion',
@@ -56,7 +57,10 @@ export class DonacionComponent implements OnInit {
 
         this.apiService.addDonacion(donacion).subscribe(
           (response) => {
-            alert('Donación realizada con éxito');
+            Swal.fire({
+              title: "donacion exitosa",
+              icon: 'success'
+            })
             this.donacionForm.reset();
           },
           (error) => {

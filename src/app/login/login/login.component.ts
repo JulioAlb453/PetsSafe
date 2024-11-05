@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angula
 import { AuthService } from '../../service/auth.service';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
-
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -33,7 +33,11 @@ export class LoginComponent {
       console.log(this.loginForm.value)
       this.authService.login(nombreUsuario, contrasena, tipoUsuario).subscribe(
         (response) => {
-          alert(`Login exitoso como ${tipoUsuario}`);
+          Swal.fire({
+            title: "Registro exitoso",
+            icon: 'success',
+            timer: 1200
+          })
           console.log(response);
           localStorage.setItem('Token', response.token)
           this.router.navigate(['/home']);

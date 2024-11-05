@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angula
 import { AuthService } from '../../service/auth.service';
 import { Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-register',
@@ -31,7 +32,7 @@ export class RegisterComponent {
       numTelefono: ['', [Validators.required, Validators.pattern("^[0-9]{10}$")]],
       tipoUsuario: ['adoptador', Validators.required], 
       localizacion: [''], 
-      tipoRescatista: ['independiente']  
+      tipoRescatista: ['']  
     });
   }
   onRegister() {
@@ -41,7 +42,10 @@ export class RegisterComponent {
       console.log(formData);
       this.authService.register(formData).subscribe(
         (response) => {
-          alert(`Registro exitoso como ${formData.tipoUsuario}`);
+          Swal.fire({
+            title: "Registro exitoso",
+            icon: 'success'
+          })
           setTimeout(() => {
             this.router.navigate(['/login']);  
           }, 500); 

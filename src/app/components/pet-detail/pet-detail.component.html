@@ -1,17 +1,17 @@
 <div class="pet-detail-container">
-    <!-- <div class="pet-image-section">
-      <img [src]="" alt="{{ mascota.nombre }}" />
-    </div> -->
-    <div class="mascota-info-section">
+  <div class="pet-image-section">
+      <img [src]="'http://localhost:3000/' + mascota.imagen" alt="{{ mascota.nombre }}" />
+  </div>
+  <div class="mascota-info-section">
       <h2>{{ mascota.nombre }}</h2>
       <h3>Mascota en adopción</h3>
       <p><strong>Género:</strong> {{ mascota.sexo }}</p>
       <p><strong>Categoría:</strong> {{ mascota.categoria }}</p>
       <p><strong>Tamaño:</strong> {{ tamano }}</p>
       <p><strong>Edad:</strong> {{ mascota.edad }}</p>
-      <p><strong>padecimiento:</strong> {{ mascota.padecimiento }}</p>
+      <p><strong>Padecimiento:</strong> {{ mascota.padecimiento }}</p>
       <button routerLink="/solicitud" class="adopt-button">
-        ¡Quiero adoptarlo!
+          ¡Quiero adoptarlo!
       </button>
-    </div>
   </div>
+</div>
