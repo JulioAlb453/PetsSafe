@@ -22,7 +22,7 @@ export class LoginComponent {
   ) {
     this.loginForm = this.fb.group({
       nombreUsuario: ['', Validators.required],
-      contrasena: ['', Validators.required], // Corregido
+      contrasena: ['', Validators.required], 
       tipoUsuario: ['adoptador', Validators.required]
     });
   }
@@ -38,8 +38,7 @@ export class LoginComponent {
             icon: 'success',
             timer: 1200
           })
-          console.log(response);
-          localStorage.setItem('Token', response.token)
+          console.log(response.token);
           this.router.navigate(['/home']);
         },
         (error) => {

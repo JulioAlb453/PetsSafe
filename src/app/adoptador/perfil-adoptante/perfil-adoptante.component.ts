@@ -15,7 +15,7 @@ export class PerfilAdoptanteComponent implements OnInit {
   constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
-    const token = localStorage.getItem('Token'); 
+    const token = localStorage.getItem('token'); 
     if (token) {
       // const header
       const decodedToken = this.decodeToken(token); 

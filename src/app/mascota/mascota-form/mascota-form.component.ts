@@ -41,7 +41,7 @@ export class MascotaFormComponent implements OnInit {
     if (this.mascotaForm.valid && this.imagenFile) {
       let formData = new FormData();
       var userId = null
-      const token = localStorage.getItem('Token');
+      const token = localStorage.getItem('token');
       if (token) {
         const decodedToken = this.decodeToken(token);
         userId = decodedToken.userId

@@ -24,5 +24,9 @@ export class AppComponent {
   get showNavbar(): boolean {
     return this.router.url !== '/login';
   }
+  get showFooter(): boolean {
+    return this.router.url !== '/login';
+  }
   
+
 }

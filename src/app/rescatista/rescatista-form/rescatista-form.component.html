@@ -33,19 +33,16 @@
       <label>Eres?</label>
       <p>
         {{
-          rescatista?.tipoRescatista === "rescatista"
-            ? "Rescatista independiente"
-            : "Busco un hogar a una mascota" ||
+          rescatista?.tipoRescatista === "independiente"
+            ? "Rescatista independiente: " + "  Busco un hogar a una mascota"
+            : "" ||
               rescatista?.tipoRescatista === "organización"
-            ? "Rescatista Organizacion"
-            : "Buscamos un hogar para las mascotas"
+            ? "Rescatista Organizacion: " +"  Buscamos un hogar para las mascotas"
+            : ""
         }}
       </p>
     </div>
-    <p class="info-text">
-      Se recomienda ser mayor de edad, si es caso contrario contacta a tus
-      padres para rellenar esta encuesta.
-    </p>
+   
     <button type="button" [routerLink]="['/mascotaForm']" class="submit-button">
       Agregar Mascota Rescatada
     </button>

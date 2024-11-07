@@ -16,7 +16,7 @@ export class HistorialRescatistaComponent implements OnChanges {
   solicitudes: any[] = [];
   pets: any;
 
-  userAdoptadorId: any;
+  userRescatistaId: any;
 
   constructor(
     private historialService: HistorialService,
@@ -34,16 +34,16 @@ export class HistorialRescatistaComponent implements OnChanges {
 
  
   getIdAdoptador() {
-    const token = localStorage.getItem('Token');
+    const token = localStorage.getItem('token');
     if (token) {
       const decodedToken = this.decodeToken(token);
-      this.userAdoptadorId = decodedToken.userId;
+      this.userRescatistaId = decodedToken.userId;
     }
   }
 
   obtenerDatos(): void {
     this.historialService
-    .getDonacionesYSolicitudesPorMascota(this.userAdoptadorId)
+    .getDonacionesYSolicitudesPorMascota(this.userRescatistaId)
     .subscribe((data) => {
       this.mascotas = data
       console.log(this.mascotas)

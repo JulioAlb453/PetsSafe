@@ -2,46 +2,23 @@
   <div class="content-wrapper">
     <h2>Solicitud de Adopción</h2>
 
-    <form [formGroup]="rescatistaForm">
+    <form [formGroup]="rescatistaForm" (ngSubmit)="submitSolicitud()" class="form-group">
+      <h3>Información de la Mascota</h3>
       <div class="form-row">
-        <label for="fechaAdopcion">Fecha de Adopción:</label>
-        <input type="date" id="fechaAdopcion" formControlName="fechaAdopcion" />
-        <div
-          *ngIf="
-            rescatistaForm.get('fechaAdopcion')?.invalid &&
-            rescatistaForm.get('fechaAdopcion')?.touched
-          "
-        >
-          <small
-            *ngIf="rescatistaForm.get('fechaAdopcion')?.errors?.['required']"
-          >
-            La fecha es requerida.
-          </small>
-        </div>
+        <label for="mascotaNombre">Nombre:</label>
+        <input id="mascotaNombre" [value]="mascota?.nombre" disabled />
       </div>
-
       <div class="form-row">
-        <label for="localizacion">Localización:</label>
-        <input id="localizacion" formControlName="localizacion" />
-        <div
-          *ngIf="
-            rescatistaForm.get('localizacion')?.invalid &&
-            rescatistaForm.get('localizacion')?.touched
-          "
-        >
-          <small
-            *ngIf="rescatistaForm.get('localizacion')?.errors?.['required']"
-          >
-            La localización es requerida.
-          </small>
-          <small
-            *ngIf="rescatistaForm.get('localizacion')?.errors?.['minlength']"
-          >
-            La localización debe tener al menos
-            {{ rescatistaForm.get('localizacion')?.errors?.['minlength'].requiredLength }}
-            caracteres.
-          </small>
-        </div>
+        <label for="mascotaSexo">Sexo:</label>
+        <input id="mascotaSexo" [value]="mascota?.sexo" disabled />
+      </div>
+      <div class="form-row">
+        <label for="mascotaEdad">Edad:</label>
+        <input id="mascotaEdad" [value]="mascota?.edad" disabled />
+      </div>
+      <div class="form-row">
+        <label for="mascotaRaza">Raza:</label>
+        <input id="mascotaRaza" [value]="mascota?.categoria" disabled />
       </div>
 
       <h3>Información del Rescatista</h3>
@@ -49,75 +26,141 @@
         <label for="rescatistaNombre">Nombre:</label>
         <input id="rescatistaNombre" [value]="rescatista?.nombre" disabled />
       </div>
-
       <div class="form-row">
         <label for="rescatistaAPaterno">Apellido Paterno:</label>
-        <input
-          id="rescatistaAPaterno"
-          [value]="rescatista?.APaterno"
-          disabled
-        />
+        <input id="rescatistaAPaterno" [value]="rescatista?.APaterno" disabled />
       </div>
       <div class="form-row">
         <label for="rescatistaAMaterno">Apellido Materno:</label>
-        <input
-          id="rescatistaAMaterno"
-          [value]="rescatista?.AMaterno"
-          disabled
-        />
+        <input id="rescatistaAMaterno" [value]="rescatista?.AMaterno" disabled />
       </div>
-
       <div class="form-row">
         <label for="rescatistaTelefono">Teléfono:</label>
-        <input
-          id="rescatistaTelefono"
-          [value]="rescatista?.numTelefono"
-          disabled
-        />
+        <input id="rescatistaTelefono" [value]="rescatista?.numTelefono" disabled />
       </div>
       <div class="form-row">
-        <label for="rescatistaLocalizacion">Localizacion</label>
-        <input
-          id="rescatistaLocalizacion"
-          [value]="rescatista?.localizacion"
-          disabled
-        />
+        <label for="rescatistaLocalizacion">Localización:</label>
+        <input id="rescatistaLocalizacion" [value]="rescatista?.localizacion" disabled />
       </div>
 
-      <h3>Información de la Mascota</h3>
+      <h3>Información de la Solicitud</h3>
       <div class="form-row">
-        <label for="mascotaNombre">Nombre:</label>
-        <input id="mascotaNombre" [value]="mascota?.nombre" disabled />
+        <label for="fechaAdopcion">Fecha de Adopción:</label>
+        <input type="date" id="fechaAdopcion" formControlName="fechaAdopcion" />
+        <div *ngIf="rescatistaForm.get('fechaAdopcion')?.invalid && rescatistaForm.get('fechaAdopcion')?.touched">
+          <small *ngIf="rescatistaForm.get('fechaAdopcion')?.errors?.['required']">
+            La fecha es requerida.
+          </small>
+        </div>
       </div>
 
       <div class="form-row">
-        <label for="mascotaSexo">Sexo:</label>
-        <input id="mascotaSexo" [value]="mascota?.sexo" disabled />
+        <label for="localizacion">Localización:</label>
+        <input type="text" id="localizacion" formControlName="localizacion" />
+        <div *ngIf="rescatistaForm.get('localizacion')?.invalid && rescatistaForm.get('localizacion')?.touched">
+          <small *ngIf="rescatistaForm.get('localizacion')?.errors?.['required']">
+            La localización es requerida.
+          </small>
+        </div>
       </div>
 
       <div class="form-row">
-        <label for="mascotaEdad">Edad:</label>
-        <input id="mascotaEdad" [value]="mascota?.edad" disabled />
+        <label for="motivoAdopcion">Motivo de Adopción:</label>
+        <textarea id="motivoAdopcion" formControlName="motivoAdopcion"></textarea>
+        <div *ngIf="rescatistaForm.get('motivoAdopcion')?.invalid && rescatistaForm.get('motivoAdopcion')?.touched">
+          <small *ngIf="rescatistaForm.get('motivoAdopcion')?.errors?.['required']">
+            El motivo de adopción es requerido.
+          </small>
+        </div>
       </div>
 
       <div class="form-row">
-        <label for="mascotaPadecimiento">Padecimiento:</label>
-        <input
-          id="mascotaPadecimiento"
-          [value]="mascota?.padecimiento"
-          disabled
-        />
+        <label for="tipoHogar">Tipo de Hogar:</label>
+        <select id="tipoHogar" formControlName="tipoHogar">
+          <option value="Casa con jardín">Casa con jardín</option>
+          <option value="Casa sin jardín">Apartamento</option>
+          <option value="Granja">Finca</option>
+          <option value="Apartamento">Apartamento</option>
+        </select>
+        <div *ngIf="rescatistaForm.get('tipoHogar')?.invalid && rescatistaForm.get('tipoHogar')?.touched">
+          <small *ngIf="rescatistaForm.get('tipoHogar')?.errors?.['required']">
+            Selecciona el tipo de hogar.
+          </small>
+        </div>
       </div>
 
-      <button
-        class="submit-button"
-        type="submit"
-        [disabled]="rescatistaForm.invalid"
-      >
-        Enviar Solicitud
-      </button>
-      <!-- <div *ngIf="loading">Enviando solicitud...</div>
-      <div *ngIf="errorMessage">{{ errorMessage }}</div> -->
+      <div class="form-row">
+        <label for="personasEnHogar">Personas que viven en el hogar?</label>
+        <select id="personasEnHogar" formControlName="personasEnHogar">
+          <option value="1">Una persona</option>
+          <option value="2">2 personas</option>
+          <option value="3">3 Personas</option>
+          <option value="4">4 personas</option>
+          <option value="5">Arriba de 5 personas</option>
+        </select>
+        <div *ngIf="rescatistaForm.get('personasEnHogar')?.invalid && rescatistaForm.get('personasEnHogar')?.touched">
+          <small *ngIf="rescatistaForm.get('personasEnHogar')?.errors?.['required']">
+            Selecciona el tipo de hogar.
+          </small>
+        </div>
+      </div>
+      <div class="form-row">
+        <label for="niñosEnHogar">Cuantos niños/niñas que viven en el hogar?</label>
+        <select id="niñosEnHogar" formControlName="niñosEnHogar">
+          <option value="1">Un niño/niña</option>
+          <option value="2">Dos niñod/niñas</option>
+          <option value="3">Tres Personas</option>
+          <option value="4">Cuatro niños/niñas</option>
+          <option value="5">Arriba de cuatro niños/niñas</option>
+        </select>
+        <div *ngIf="rescatistaForm.get('niñosEnHogar')?.invalid && rescatistaForm.get('niñosEnHogar')?.touched">
+          <small *ngIf="rescatistaForm.get('niñosEnHogar')?.errors?.['required']">
+            Selecciona el tipo de hogar.
+          </small>
+        </div>
+      </div>
+      
+      <div class="form-row">
+        <label for="experienciaMascotas">Experiencia con mascotas</label>
+        <select id="experienciaMascotas" formControlName="experienciaMascotas">
+          <option value="Ninguna">Ninguna</option>
+          <option value="Poca">Poca</option>
+          <option value="Moderada">Moderada</option>
+          <option value="Alta">Alta</option>
+        </select>
+        <div *ngIf="rescatistaForm.get('experienciaMascotas')?.invalid && rescatistaForm.get('experienciaMascotas')?.touched">
+          <small *ngIf="rescatistaForm.get('experienciaMascotas')?.errors?.['required']">
+            Selecciona el tipo de hogar.
+          </small>
+        </div>
+      </div>
+      <div class="form-row">
+    
+    
+    
+        <label for="trabajoDesdeCasa">Trabajas desde casa?</label>
+        <select id="trabajoDesdeCasa" formControlName="trabajoDesdeCasa">
+          <option value="Si">Si</option>
+          <option value="No">No</option>
+        </select>
+        <div *ngIf="rescatistaForm.get('trabajoDesdeCasa')?.invalid && rescatistaForm.get('trabajoDesdeCasa')?.touched">
+          <small *ngIf="rescatistaForm.get('trabajoDesdeCasa')?.errors?.['required']">
+            Selecciona el tipo de hogar.
+          </small>
+        </div>
+      </div>
+      <div class="form-row">
+        <label for="tiempoDisponible">Tienes tiempo para cuidar a tu mascota? (menciona cuantas horas)</label>
+        <input type="text" id="tiempoDisponible" formControlName="tiempoDisponible" />
+        <div *ngIf="rescatistaForm.get('tiempoDisponible')?.invalid && rescatistaForm.get('tiempoDisponible')?.touched">
+          <small *ngIf="rescatistaForm.get('tiempoDisponible')?.errors?.['required']">
+            La localización es requerida.
+          </small>
+        </div>
+      </div>
+
+     
+      <button type="submit" [disabled]="rescatistaForm.invalid">Enviar Solicitud</button>
     </form>
   </div>
 </div>

@@ -1,5 +1,11 @@
 // info-mascota.component.ts
-import { Component, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnInit,
+  OnChanges,
+  SimpleChanges,
+} from '@angular/core';
 import { PetCardComponent } from '../../components/pet-card/pet-card.component';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -47,16 +53,15 @@ export class InfoMascotaComponent implements OnChanges {
         localizacion: this.rescatista.localizacion,
         tipoRescatista: this.rescatista.tipoRescatista,
       });
-      console.log('Datos en el formulario:', this.rescatistaForm.value); 
+      console.log('Datos en el formulario:', this.rescatistaForm.value);
     }
     this.loadPets();
-
   }
 
   loadPets(): void {
     this.apiService.getMascota().subscribe(
       (data) => {
-        console.log(data)
+        console.log(data);
         this.pets = data;
       },
       (error) => {

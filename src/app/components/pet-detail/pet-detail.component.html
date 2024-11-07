@@ -10,8 +10,8 @@
       <p><strong>Tamaño:</strong> {{ tamano }}</p>
       <p><strong>Edad:</strong> {{ mascota.edad }}</p>
       <p><strong>Padecimiento:</strong> {{ mascota.padecimiento }}</p>
-      <button routerLink="/solicitud" class="adopt-button">
-          ¡Quiero adoptarlo!
+      <button [routerLink]="['/solicitud', mascota.id]" class="adopt-button">
+        ¡Quiero adoptarlo!
       </button>
   </div>
 </div>

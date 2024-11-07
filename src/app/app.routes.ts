@@ -11,18 +11,22 @@ import { LoginComponent } from './login/login/login.component';
 import { RegisterComponent } from './login/register/register.component';
 import { HistorialRescatistaComponent } from './rescatista/historial-rescatista/historial-rescatista.component';
 import { DonacionComponent } from './adoptador/donacion/donacion.component';
+import { AuthGuard } from './auth/auth.guard';
+
 export const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
-  }, 
+  },
   {
     path: 'donacion',
     component: DonacionComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'historialRescatista',
     component: HistorialRescatistaComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'register',
@@ -35,26 +39,36 @@ export const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'perfilAdoptante',
     component: PerfilAdoptanteComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'perfilRescatista',
     component: PerfilRescatistaComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'inforMascota',
     component: VistaMascotasComponent,
+    canActivate: [AuthGuard],
   },
   {
-    path: 'solicitud',
+    path: 'solicitud/:id',
     component: VistaAdopcionComponent,
+    canActivate: [AuthGuard],
   },
-  { path: 'adopcion/:id', component: AdoptionPageComponent },
+  {
+    path: 'adopcion/:id',
+    component: AdoptionPageComponent,
+    canActivate: [AuthGuard],
+  },
   {
     path: 'mascotaForm',
     component: VistaFormMascotaComponent,
+    canActivate: [AuthGuard],
   },
 ];

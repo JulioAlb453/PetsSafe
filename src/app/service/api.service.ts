@@ -12,19 +12,18 @@ export class ApiService {
   getAdoptadores(): Observable<any> {
     return this.http.get(`${this.baseUrl}/adoptadores/obtenerAdoptadores/`);
   }
-  getRescatistaById(id: string) {
-    return this.http.get(
-      'http://localhost:3000/rescatista/obtenerRescatistasByID/1'
-    );
-  }
+
 
   getRescatista(): Observable<any> {
     return this.http.get(`${this.baseUrl}/rescatista/obtenerRescatista/`);
   }
+  getRescatistaById(id: string): Observable<any>{
+    return this.http.get(`${this.baseUrl}/rescatista/obtenerRescatistasByID/` + id)
+  }
 
   getMascotaById(id: string) {
     return this.http.get(
-      'http://localhost:3000/mascotas/obtenerMascotasByID/10'
+      'http://localhost:3000/mascotas/obtenerMascotasByID/'+id
     );
   }
 

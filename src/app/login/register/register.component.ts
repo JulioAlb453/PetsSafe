@@ -30,7 +30,7 @@ export class RegisterComponent {
       edad: ['', [Validators.required, Validators.min(18)]],
       correoElectronico: ['', [Validators.required, Validators.email]],
       numTelefono: ['', [Validators.required, Validators.pattern("^[0-9]{10}$")]],
-      tipoUsuario: ['adoptador', Validators.required], 
+      tipoUsuario: ['', Validators.required], 
       localizacion: [''], 
       tipoRescatista: ['']  
     });
@@ -39,6 +39,7 @@ export class RegisterComponent {
     if (this.registerForm.valid) {
       
       const formData = this.registerForm.value;
+      console.log(this.registerForm.value);
       console.log(formData);
       this.authService.register(formData).subscribe(
         (response) => {
@@ -56,5 +57,7 @@ export class RegisterComponent {
       );
     }
   }
+
+ 
   
 }

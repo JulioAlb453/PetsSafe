@@ -16,7 +16,7 @@ export class PerfilRescatistaComponent implements OnInit {
   constructor(private authService: AuthService) {} 
 
   ngOnInit(): void {
-    const token = localStorage.getItem('Token'); 
+    const token = localStorage.getItem('token'); 
     if (token) {
       const decodedToken = this.decodeToken(token); 
       const userId = decodedToken.userId; 
