@@ -36,14 +36,19 @@ export class LoginComponent {
           Swal.fire({
             title: "Registro exitoso",
             icon: 'success',
+            showConfirmButton: false,
             timer: 1200
           })
-          console.log(response.token);
           this.router.navigate(['/home']);
         },
         (error) => {
           console.log(error);
-          this.errorMessage = 'Nombre de usuario o contraseña incorrectos';
+          Swal.fire ({
+            title: "Nombre de usuario o contraseña incorrectos",
+            icon: 'warning',
+            showConfirmButton: false,
+            timer: 1200,
+          })
           console.log(this.loginForm.valid)
         }
       );

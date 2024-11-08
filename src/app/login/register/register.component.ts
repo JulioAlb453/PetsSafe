@@ -39,20 +39,26 @@ export class RegisterComponent {
     if (this.registerForm.valid) {
       
       const formData = this.registerForm.value;
-      console.log(this.registerForm.value);
-      console.log(formData);
       this.authService.register(formData).subscribe(
         (response) => {
           Swal.fire({
             title: "Registro exitoso",
-            icon: 'success'
+            icon: 'success',
+             showConfirmButton: false,
+            timer: 1300,
           })
           setTimeout(() => {
             this.router.navigate(['/login']);  
           }, 500); 
         },
         (error) => {
-          this.errorMessage = 'Hubo un error en el registro. Inténtalo de nuevo.';
+         
+          Swal.fire ({
+            title: "Ha ocurrido un error",
+            icon: 'error',
+            showConfirmButton: false,
+            timer: 1300,
+          })
         }
       );
     }
