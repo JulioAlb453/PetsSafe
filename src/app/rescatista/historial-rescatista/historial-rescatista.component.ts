@@ -3,6 +3,7 @@ import { HistorialService } from '../../service/historial-service.service';
 import { ApiService } from '../../service/api.service';
 import { CommonModule } from '@angular/common';
 import { OnChanges } from '@angular/core';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-historial-rescatista',
   standalone: true,
@@ -59,7 +60,12 @@ export class HistorialRescatistaComponent implements OnChanges {
 
   aceptarSolicitud(idSolicitud: any){
     this.apiService.aceptarSolicitud(idSolicitud).subscribe((data) =>{
-      alert('solicitud aceptada')
+      Swal.fire({
+        title: "Solicitud aceptada",
+        icon: 'success',
+         showConfirmButton: false,
+        timer: 1300,
+      })
       this.getIdAdoptador();
     this.obtenerDatos();
     })
@@ -70,7 +76,12 @@ export class HistorialRescatistaComponent implements OnChanges {
     this.apiService.rechazarSolicitud(idSolicitud).subscribe((data) =>{
       this.getIdAdoptador();
       this.obtenerDatos();
-      alert('solicitud rechazada')
+      Swal.fire ({
+        title: "Solicitud Rechazada",
+        icon: 'error',
+        showConfirmButton: false,
+        timer: 1300,
+      })
     })
     
   }
