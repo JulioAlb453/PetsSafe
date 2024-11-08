@@ -32,13 +32,11 @@
     <div class="form-row">
       <label>Eres?</label>
       <p>
-        {{
-          rescatista?.tipoRescatista === "independiente"
-            ? "Rescatista independiente: " + "  Busco un hogar a una mascota"
-            : "" ||
-              rescatista?.tipoRescatista === "organización"
-            ? "Rescatista Organizacion: " +"  Buscamos un hogar para las mascotas"
-            : ""
+        {{ rescatista?.tipoRescatista === 'independiente'
+          ? 'Rescatista independiente: Busco un hogar a una mascota'
+          : rescatista?.tipoRescatista === 'organización'
+          ? 'Rescatista Organización: Buscamos un hogar para las mascotas'
+          : ''
         }}
       </p>
     </div>

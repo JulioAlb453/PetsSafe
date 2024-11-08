@@ -1,48 +1,91 @@
 <div class="historial-container">
-  <h2 class="historial-title">Historial de Mascotas, Donaciones y Solicitudes</h2>
+  <h2 class="historial-title">
+    Historial de Mascotas, Donaciones y Solicitudes
+  </h2>
 
-  <!-- Sección de mascotas publicadas -->
-  <div *ngIf="mascotas && mascotas.length > 0" class="mascotas-section">
-    <h3 class="mascotas-title">Mascotas Publicadas</h3>
-    <div class="mascotas-cards">
-      <div *ngFor="let mascota of mascotas" class="mascota-card">
-        <div class="mascota-info">
-          <img [src]="'http://localhost:3000/' + mascota.imagen" >
-          <strong class="mascota-name">{{ mascota.nombre }}</strong> <br />
-          <span class="mascota-category">{{ mascota.categoria }}</span> - 
-          <span class="mascota-age">{{ mascota.edad }} años</span>
+  <div
+    *ngIf="mascotas && mascotas.length > 0"
+    class="historial-mascotas-section"
+  >
+    <h3 class="historial-subtitle">Mascotas Publicadas</h3>
+    <div class="historial-mascotas-cards">
+      <div *ngFor="let mascota of mascotas" class="historial-mascota-card">
+        <div class="historial-mascota-info">
+          <img
+            [src]="'http://localhost:3000/' + mascota.imagen"
+            alt="Imagen de {{ mascota.nombre }}"
+            class="historial-mascota-imagen"
+          />
+          <strong class="historial-mascota-nombre">{{ mascota.nombre }}</strong>
+          <br />
+          <span class="historial-mascota-categoria">{{
+            mascota.categoria
+          }}</span>
+          -
+          <span class="historial-mascota-edad">{{ mascota.edad }} años</span>
         </div>
 
-        <div *ngIf="mascota.donaciones && mascota.donaciones.length > 0" class="donaciones-section">
-          <h4 class="donaciones-title">Donaciones Recibidas</h4>
-          <ul class="donaciones-list">
-            <li *ngFor="let donacion of mascota.donaciones" class="donacion-item">
-              Donación de <strong>{{ donacion.monto }}</strong> por {{ donacion.nombre }} - 
-              <span class="donacion-fecha">Fecha: {{ donacion.fechaDonacion }}</span>
+        <div
+          *ngIf="mascota.donaciones && mascota.donaciones.length > 0"
+          class="historial-donaciones-section"
+        >
+          <h4 class="historial-donaciones-title">Donaciones Recibidas</h4>
+          <ul class="historial-donaciones-list">
+            <li
+              *ngFor="let donacion of mascota.donaciones"
+              class="historial-donacion-item"
+            >
+              Donación de
+              <strong class="historial-donacion-monto">{{
+                '$'+ donacion.monto +'MXN'
+              }}</strong>
+              por {{ donacion.nombre }} -
+              <span class="historial-donacion-fecha"
+                >Fecha: {{ donacion.fechaDonacion }}</span
+              >
             </li>
           </ul>
         </div>
 
-        <div *ngIf="mascota.solicitudes && mascota.solicitudes.length > 0" class="solicitudes-section">
-          <h4 class="solicitudes-title">Solicitudes de Adopción</h4>
-          <ul class="solicitudes-list">
-            <li *ngFor="let solicitud of mascota.solicitudes" class="solicitud-item">
-              <strong>Solicitante:</strong> {{ solicitud.solicitante }} <br />
-              <strong>Mascota:</strong> {{ solicitud.mascota }} <br />
-              <strong>Estado:</strong> {{ solicitud.estatus }} <br />
-              <strong>Fecha de Solicitud:</strong> {{ solicitud.fechaSolicitud }} <br />
-              <div class="solicitud-actions">
-                <button (click)="aceptarSolicitud(solicitud.id)" class="accept-button">Aceptar</button>
-                <button (click)="denegarSolicitud(solicitud.id)" class="deny-button">Denegar</button>
-              </div>
-            </li>
-          </ul>
+        <div class="historial-donaciones-section">
+          <div
+            *ngIf="mascota.solicitudes && mascota.solicitudes.length > 0"
+            class="historial-solicitudes-section"
+          >
+            <h4 class="historial-solicitudes-title">Solicitudes de Adopción</h4>
+            <ul class="historial-solicitudes-list">
+              <li
+                *ngFor="let solicitud of mascota.solicitudes"
+                class="historial-solicitud-item"
+              >
+                <strong>Solicitante:</strong> {{ solicitud.solicitante }} <br />
+                <strong>Mascota:</strong> {{ solicitud.mascota }} <br />
+                <strong>Estado:</strong> {{ solicitud.estatus }} <br />
+                <strong>Fecha de Solicitud:</strong>
+                {{ solicitud.fechaSolicitud }} <br />
+                <div class="historial-solicitud-actions">
+                  <button
+                    (click)="aceptarSolicitud(solicitud.id)"
+                    class="historial-solicitud-accept-button"
+                  >
+                    Aceptar
+                  </button>
+                  <button
+                    (click)="denegarSolicitud(solicitud.id)"
+                    class="historial-solicitud-deny-button"
+                  >
+                    Denegar
+                  </button>
+                </div>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
   </div>
 
-  <div *ngIf="!mascotas || mascotas.length === 0" class="no-mascotas">
+  <div *ngIf="!mascotas || mascotas.length === 0" class="historial-no-mascotas">
     <p>No hay mascotas publicadas.</p>
   </div>
 </div>

@@ -4,6 +4,7 @@ import { ApiService } from '../../service/api.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from '../../service/auth.service';
 import { CommonModule } from '@angular/common';
+import Swal from 'sweetalert2';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -126,10 +127,20 @@ export class SolicitudAdopcionComponent implements OnInit {
 
       this.apiService.addSolicitud(solicitudData).subscribe(
         (response) => {
-          console.log('Solicitud enviada:', response);
+          Swal.fire({
+            title: "Solicitud enviada",
+            icon: 'success',
+            showConfirmButton: false,
+            timer: 1300,
+          })
         },
         (error) => {
-          console.error('Error al enviar la solicitud:', error);
+          Swal.fire ({
+            title: "Ha ocurrido un error",
+            icon: error,
+            showConfirmButton: false,
+            timer: 1300,
+          })
         }
       );
     }
