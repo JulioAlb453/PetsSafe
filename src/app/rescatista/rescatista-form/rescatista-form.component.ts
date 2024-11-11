@@ -16,6 +16,7 @@ import Swal from 'sweetalert2';
 export class RescatistaFormComponent implements OnChanges {
   @Input() rescatista: any;
   rescatistaForm: FormGroup;
+  idRescatista: any;
 
   constructor(private fb: FormBuilder, private apiService: ApiService) {
     this.rescatistaForm = this.fb.group({
@@ -25,7 +26,7 @@ export class RescatistaFormComponent implements OnChanges {
       numTelefono: ['', Validators.required],
       correoElectronico: ['', [Validators.required, Validators.email]],
       edad: ['', Validators.required],
-      localizacion: ['tuxtla'],
+      localizacion: [''],
       tipoRescatista: [''],
     });
   }
@@ -42,36 +43,7 @@ export class RescatistaFormComponent implements OnChanges {
         localizacion: this.rescatista.localizacion,
         tipoRescatista: this.rescatista.tipoRescatista,
       });
-      console.log('Datos en el formulario:', this.rescatistaForm.value); 
-    }
-  }
-
-  actualizarDatos() {
-    const edad = this.rescatistaForm.get('edad')?.value;
-
-    if (edad && edad < 18) {
-      this.mostrarAlertaEdad();
-      return;
-    }
-
-    if (this.rescatistaForm.valid) {
-      const formData = this.rescatistaForm.value;
-      this.apiService.addRescatista(formData).subscribe(
-        (response) => {
-          Swal.fire('Éxito', 'Rescatista registrado correctamente', 'success');
-          console.log('Datos del rescatista enviados a la API:', response);
-        },
-        (error) => {
-          if (error.status === 201) {
-            Swal.fire('Éxito', 'Rescatista registrado correctamente', 'success');
-          } else {
-            console.error('Error al enviar los datos:', error);
-            Swal.fire('Error', 'Hubo un problema al registrar el rescatista', 'error');
-          }
-        }
-      );
-    } else {
-      console.log('Formulario no válido');
+      console.log('Datos en el formulario:', this.rescatistaForm.value);
     }
   }
 

@@ -22,10 +22,10 @@ export class AppComponent {
   constructor(private router: Router) {}
 
   get showNavbar(): boolean {
-    return this.router.url !== '/login';
+    return this.router.url !== '/', this.router.url !=='/login';
   }
   get showFooter(): boolean {
-    return this.router.url !== '/login';
+    return this.router.url !== '/', this.router.url !=='/login';
   }
   
 

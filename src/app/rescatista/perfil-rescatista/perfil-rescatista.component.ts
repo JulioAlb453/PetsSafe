@@ -43,4 +43,6 @@ export class PerfilRescatistaComponent implements OnInit {
     return payload;
   }
   
+
+  
 }
