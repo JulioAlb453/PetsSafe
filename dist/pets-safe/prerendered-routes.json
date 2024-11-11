@@ -1,0 +1,14 @@
+{
+  "routes": [
+    "/",
+    "/donacion",
+    "/historialRescatista",
+    "/home",
+    "/inforMascota",
+    "/login",
+    "/mascotaForm",
+    "/perfilAdoptante",
+    "/perfilRescatista",
+    "/register"
+  ]
+}
