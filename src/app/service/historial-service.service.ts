@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class HistorialService {
-  private baseUrl = 'http://localhost:3000';
+  private baseUrl = 'http://54.221.204.89';
 
   constructor(private http: HttpClient) {}
 
