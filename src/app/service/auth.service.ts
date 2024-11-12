@@ -8,7 +8,7 @@ import { response } from 'express';
   providedIn: 'root',
 })
 export class AuthService {
-  private baseUrl = 'http://54.221.204.89';
+  private baseUrl = 'http://localhost:3000';
 
   constructor(private http: HttpClient) {}
 

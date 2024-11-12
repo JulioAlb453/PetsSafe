@@ -32,10 +32,10 @@ export const routes: Routes = [
     path: 'register',
     component: RegisterComponent,
   },
-  {
-    path: '',
-    component: LoginComponent,
-  },
+  // {
+  //   path: '',
+  //   component: LoginComponent,
+  // },
   {
     path: 'home',
     component: HomeComponent,
@@ -71,4 +71,8 @@ export const routes: Routes = [
     component: VistaFormMascotaComponent,
     canActivate: [AuthGuard],
   },
+  // Otras rutas definidas
+  { path: '', component: HomeComponent, canActivate: [AuthGuard] }, // Ruta principal
+  // Ruta comodín para rutas no válidas
+  { path: '**', redirectTo: '', pathMatch: 'full' },
 ];
